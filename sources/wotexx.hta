@@ -1,0 +1,2350 @@
+<!DOCTYPE HTML>
+<!--
+  Seanox Software Solutions ist ein Oliver Schmuhl Projekt, im Folgenden
+  Seanox Software Solutions oder kurz Seanox genannt.
+
+  Diese Software unterliegt der Version 2 der GNU General Public License.
+
+  WoTeXX, wiki oriented text capture
+  Copyright (C) @@@ant-project-year Seanox Software Solutions
+
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of version 2 of the GNU General Public License as
+  published by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+-->
+<html>
+  <head>
+    <hta:application id="hta" applicationname="WoTeXX"
+      border="thick" borderstyle="raised" caption="yes" contextmenu="no"
+      icon="wotexx.ico" innerborder="no" maximizebutton="yes"
+      minimizebutton="yes" navigable="yes" scroll="no"
+      scrollflat="yes" selection="yes" showintaskbar="yes" singleinstance="yes"
+      sysmenu="yes" version="@@@ant-project-version" windowState="normal"/>
+    <meta http-equiv="MSThemeCompatible" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1;">
+    <meta http-equiv="content-dialect" content="wiki|markdown">
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <meta http-equiv="x-ua-window" content="top=0px; left=20%; width=80%; height=100%;">
+    <title>Seanox WoTeXX</title>
+    <script type="text/wiki">
+    
+=={style="display:none;"}Titel|Titel==
+
+  [@
+  <div id="Splash">
+    <div>
+      <div>
+        <span>SEANOX</span><span>WOTEXX</span>
+        <span>
+          Seanox WoTeXX @@@ant-project-version<br>
+          Copyright (C) @@@ant-project-year Seanox Software Solutions<br>
+          Alle Rechte vorbehalten
+        </span>  
+      </div>
+    </div>
+  </div>
+  @]
+    
+==Lizenz|Lizenz==
+
+  Seanox Software Solutions ist ein Oliver Schmuhl Projekt, im Folgenden
+  Seanox Software Solutions oder kurz Seanox genannt.\\
+  \\
+  Diese Software unterliegt der Version 2 der GNU General Public License.\\
+  \\
+  WoTeXX, wiki oriented text capture\\
+  Copyright (C) @@@ant-project-year Seanox Software Solutions\\
+  \\
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of version 2 of the GNU General Public License as
+  published by the Free Software Foundation.\\
+  \\
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  General Public License for more details.\\
+  \\
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  
+  ===LizenzKomponenten|weitere===
+  
+    Weitere Lizenzen zu enthaltenen Komponenten anderer Anbieter.
+  
+  ====LizenzKomponentenMarked|marked====
+  
+    Copyright (c) 2011-2014, Christopher Jeffrey (https://github.com/chjj/)\\
+    \\
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:\\
+    \\
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.\\
+    \\
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+==Beschreibung|Beschreibung==
+
+  WoTeXX ist ein Wiki-Syntax orientiertes Dokumentationswerkzeug und Toolkit. Im
+  Vordergrund steht das schnelle und unkomplizierte Verfassen von Inhalten für
+  Dokumentationen, elektronischen Handbüchern und (Online)Hilfen ohne sich
+  Gedanken über Formatierung, Umsetzung oder Zielsystem machen zu müssen.\\
+  \\
+  Warum der Umweg über die Wiki-Syntax?\\
+  \\
+  Sie ist einfach und schnell geschrieben.\\
+  \\
+  Das Toolkit funktioniert serverlos und besteht ausschliesslich aus HTML, CSS
+  sowie JavaScript. Es ist kompakt und auf den gängigen Browsern (Microsoft
+  Internet Explorer, Mozilla Firefox, Google Chrome, Opera, Apple Safari,
+  Konqueror) lauffähig. Individuelle Anpassungen sowie Erweiterungen lassen sich
+  einfach und unkompliziert vornehmen. Inhalt, Aufbereitung sowie Darstellung
+  sind komplett getrennt und der Quelltext ist durchgehend dokumentiert. Da die
+  Wiki-Syntax direkt im Toolkit hinterlegt wird, besteht die erstellte
+  Dokumentation bzw. (Online)Hilfe aus nur einer Datei.
+
+==Funktionsumfang|Funktionsumfang==
+
+  Allgemein:
+
+  * Serverlos, das Toolkit besteht ausschliesslich aus HTML, CSS sowie ~~~
+    JavaScript
+  * Cross-Browser fähig, getestet wurden Microsoft Internet Explorer, ~~~
+    Mozilla Firefox, Google Chrome, Opera, Apple Safari, Konqueror
+  * Automatisches Erstellen vom Inhaltsverzeichnis (klappbarer ~~~
+    Navigationsbaum)
+  * Kontextsensitiver Aufruf für den direkten Einsprung in Kapitel ~~~
+    über Kapitelnummer oder Kapitelname
+  * Einfache Integration in Anwendungen; geeignet als ~~~
+    [[http://de.wikipedia.org/wiki/HTML-Applikation|Microsoft HTA (HTML-Application)]] ~~~
+  * Skalierbares Layout
+  * Individuelle Anpassungen und Erweiterungen
+
+  Wiki-Syntax:
+
+  * Unterstützt gängige Formate (fett, kursiv, hochgestellt, ~~~
+    tiefgestellt, durchgestrichen, unterstrichen, markiert)
+  * Unterstützt gängige Blöcke (Kommentare, Zitate, Texte, ~~~
+    Gruppierungen, Tabellen)
+  * Gruppierung; mit und ohne Legende
+  * Tabellen; alternierend, direkter Textausrichtung, ~~~
+    vertikales/horizontales Verbinden von Zellen
+  * Unterstützt gängige Direktiven (Kapitel, Aufzählung, Listen, ~~~
+    Zeilenumbruch, horizontale Linie, Trennzeichen)
+  * Kapitel; automatische Nummerierung (numerisch, alphabetisch, ~~~
+    römisch), automatische Einrückung
+  * Einbetten von Media- und Bild-Dateien; automatische Titelvergabe ~~~
+    für Bilder und Media-Dateien
+  * Einbetten von HTML
+  * Aufruf von JavaScript
+  * Interne und externe Verweise (Links)
+  * Individuelle und zusätzliche Styles und Attribute als direkte ~~~
+    Angabe bei allen Befehlen
+    
+  Markdown-Syntax:
+  
+  * Block-Elemente (Absätze und Zeilenumbrüche, Kopfzeilen, Zitate, Listen ~~~
+    Code-Blöcke, Horizontale Linien
+  * Span-Elemente (Links, Betonung, Code, Grafiken)
+  * Verschiedenes (Automatische Links, Backslash-Maskierung)
+
+==Systemanforderung|Systemanforderung==
+
+  * JavaScript 1.8 oder höher
+  * DOM 1.x oder höher
+  * CSS 3.x oder höher
+  * HTML 5.x oder höher
+
+  Unterstützt werden folgende Browser (in der aktuellen Version):
+
+  * Microsoft Internet Explorer
+  * Mozilla Firefox
+  * Google Chrome
+  * Opera
+  * Apple Safari
+  * Konqueror
+
+==Anwendung|Anwendung==
+
+  ===AnwendungAufbau|Aufbau===
+
+    Beim Dateiformat von WoTeXX handelt es sich um ein normales HTML-Dokument.
+    Im Kopf (%%head%%) sind alle benötigten Skripte für CSS und JavaScript
+    untergebracht. Der Körper (%%body%%) enthält die Vorlage und das Grundgerüst
+    für die Anzeige bzw. Ausgabe.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    ::mark!&lt;script type="text/wiki"&gt;::~~~~
+      ~~      ::mark!...::~~~~
+      ~~    ::mark!&lt;/script&gt;::~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    Die zu verarbeitende Wiki-Syntax wird als Skript betrachtet, ist somit ein
+    Bestandteil vom Kopf und wird dort als Skript vom Typ %%text/wiki%%
+    definiert. Von diesem Skripttyp lassen sich im Kopf beliebig viele Bereiche
+    anlegen. Zur Ausführung werden diese dann entsprechend der Reihenfolge zu
+    einem Skript zusammengeführt.
+
+  ===AnwendungTexterfassung|Texterfassung===
+
+    Für die Texterfassung ist jeder beliebige Texteditor geeignet. Von
+    Office-Anwendungen, Rich-Text- und WYSIWYG- Werkzeugen wird abgeraten, da
+    diese unter Umständen mit zusätzlichen Formatinformationen die Wiki-Syntax
+    verfremden können.
+
+  ===AnwendungAusgabe|Ausgabe===
+
+    Die Ausgabe erfolgt kapitelweise. Dabei bilden die Kapitel der 1. Ordnung
+    eine komplette Ansicht, welche weitere Unterkapitel enthalten.\\
+    \\
+    Der Anzeigebereich ist in Navigation und Kapitelansicht durch eine dünne
+    Linie unterteilt, über die sich der Anzeigebereich in der Horizontalen mit
+    der Maus und der gedrückten linken Maustaste verschieben lässt.
+
+  ===AnwendungNavigation|Navigation===
+
+    Entsprechend der gefundenen Kapitel wird die Navigation automatisch als Baum
+    erstellt.\\
+    \\
+    Die Knoten lassen sich durch Anklicken öffnen und schliessen, wobei der
+    Zustand der darunter liegenden Knoten erhalten bleibt. Beim Anklicken eines
+    Kapitels wird dieses und ggf. der darunter liegende Zweig im Navigationsbaum
+    geöffnet.\\
+    \\
+    Wird WoTeXX direkt, ohne oder mit einem ungültigen Kapitel aufgerufen, sind
+    die Elemente des Baumes komplett geschlossen und es wird das erste Kapitel
+    angezeigt. Erfolgt der Aufruf mit einem gültigen Kapitel wird dieses und der
+    entsprechende Zweig im Navigationsbaum angezeigt.\\
+    
+  ===AnwendungAnlagen|Anlagen===
+  
+    Anlagen sind eine spezielle Form von Platzhalter, welche in der Wiki-Syntax
+    verwendet werden können. Damit lassen sich Media-Inhalte und wiederkehrende
+    Wiki-Syntax als Vorlage einbetten.\\
+    Die Syntax ist gleich der in den
+    [[EntwicklungMehrsprachigkeitResources|ResourceBundles]], wird aber über
+    einen anderen Präprozessor aufgelöst, der sich ausschliesslich auf
+    Wiki-Skripte auswirkt.  
+  
+    ====AnwendungAnlagenDaten|Daten====
+      
+      [%!~~~~
+        ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+        ~~&lt;html&gt;~~~~
+        ~~  &lt;head&gt;~~~~
+        ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+        ~~    ::mark!&lt;script type="text/data"&gt;::~~~~
+        ~~      ::mark!...::~~~~
+        ~~    ::mark!&lt;/script&gt;::~~~~      
+        ~~    &lt;script type="text/wiki"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;script type="text/javascript"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;style type="text/css"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/style&gt;~~~~
+        ~~  &lt;/head&gt;~~~~
+        ~~  &lt;body&gt;~~~~
+        ~~    ...~~~~
+        ~~  &lt;/body&gt;~~~~
+        ~~&lt;/html&gt;~~~~
+      %]
+      
+    ====AnwendungAnlagenSyntax|Syntax====
+      
+      Mit einfach, überschaubar und sparsam lässt sich die Syntax beschreiben.
+      Sie setzt auf das Schlüssel/Wert-Prinzip (Key/Value), unterstützt
+      Zeilenfortführung und rekursive Platzhalter.\\
+      \\
+      Beispiel der Verwendung:\\
+      \\
+      [%!~~~~
+        ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+        ~~&lt;html&gt;~~~~
+        ~~  &lt;head&gt;~~~~
+        ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+        ~~    ::mark!&lt;script type="text/data"&gt;::~~~~
+        ~~      ::mark!Platzhalter_Text_A = Text für den Platzhalter_A::~~~~        
+        ~~      Platzhalter_::mark!Text::_B = Text für den Platzhalter_B~~~~                    
+        ~~                         ::mark!+:: mit Fortführung in der Folgezeile~~~~             
+        ~~      Platzhalter_Text_D = Text für Platzhalter_D ~~~~ 
+        ~~                         ::mark!+:: mit Fortführung in der Folgezeile~~~~                    
+        ~~                         + mit Text von ::mark!${Platzhalter_A}::~~~~ 
+        ~~      Platzhalter_::mark!Bild::_A = ::mark!data:image/x-icon;base64,...::~~~~
+        ~~    ::mark!&lt;/script&gt;::~~~~      
+        ~~    &lt;script type="text/wiki"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;script type="text/javascript"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;style type="text/css"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/style&gt;~~~~
+        ~~  &lt;/head&gt;~~~~
+        ~~  &lt;body&gt;~~~~
+        ~~    ...~~~~
+        ~~  &lt;/body&gt;~~~~
+        ~~&lt;/html&gt;~~~~
+      %]
+      
+    ====AnwendungAnlagenVerwendung|Verwendung====
+      
+      Platzhalter können innerhalb der Vorlagen und der Wiki-Syntax verwendet
+      werden. Der Präprozessor kümmert sich mit dem Laden des Kapitels um das
+      Auflösen.\\
+      \\
+      Beispiel der Verwendung:\\
+      \\
+      [%!~~~~
+        ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+        ~~&lt;html&gt;~~~~
+        ~~  &lt;head&gt;~~~~
+        ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+        ~~    ::mark!&lt;script type="text/data"&gt;::~~~~
+        ~~      ::mark!Platzhalter_Text_A = Text für den Platzhalter_A::~~~~        
+        ~~      Platzhalter_Text_B = Text für Platzhalter_B ~~~~ 
+        ~~                         ::mark!+:: mit Fortführung in der Folgezeile~~~~                    
+        ~~                         + mit Text von ::mark!${Platzhalter_A}::~~~~ 
+        ~~      Platzhalter_::mark!Bild::_A = ::mark!data:image/x-icon;base64,...::~~~~
+        ~~    ::mark!&lt;/script&gt;::~~~~      
+        ~~    &lt;script type="text/wiki"&gt;~~~~
+        ~~      ::mark!$~~{Platzhalter_Text_A}::
+        ~~      ...~~~~
+        ~~      [~~[image:~~::mark!$~~{Platzhalter_Bild_A}::|Bild]~~]~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;script type="text/javascript"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;style type="text/css"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/style&gt;~~~~
+        ~~  &lt;/head&gt;~~~~
+        ~~  &lt;body&gt;~~~~
+        ~~    ...~~~~
+        ~~  &lt;/body&gt;~~~~
+        ~~&lt;/html&gt;~~~~
+      %]
+    
+  ===AnwendungMarkdown|Markdown===
+  
+    Mit Markdown steht ein alternativer Dialekt zu Verfügung.\\
+    \\
+    Die Implementierung basiert auf dem
+    [[https://github.com/chjj/marked|marked-Projekt]] und stellt die gängigen
+    Syntax-Elemente bereit, wie sie auf
+    [[http://daringfireball.net/projects/markdown|Daring Fireball]] und
+    [[http://markdown.de|markdown.de]] beschrieben werden.\\
+    \\
+    Vor der Verwendung muss der Dialekt in WoTeXX registriert werden. Dies
+    erfolgt über die Meta-Information %%content-dialect%%, wo %%markdown%% im
+    Attribut %%content%% gesetzt sein muss. Bei der Registrierung mehrerer
+    Dialekte werden diese einfach durch ein Pipe getrennt angegeben.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    ::mark!&lt;meta http-equiv="content-dialect":: ::mark!content::="wiki|::mark!markdown::"&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    Die Auswahl des Dialekts trifft WoTeXX automatisch, abhängig davon, welcher
+    Typ von Skript-Block zuerst gefunden wird.\\
+    \\
+    Zur Verwendung von Markdown muss der entsprechende Skript-Block wie folgt
+    eingebettet werden.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    ::mark!&lt;script type="text/markdown"&gt;::~~~~
+      ~~      ::mark!...::~~~~
+      ~~    ::mark!&lt;/script&gt;::~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    
+    ===AnwendungKonfiguration|Konfiguration===
+    
+    Konfigurationen erfolgen in WoTeXX über Meta-Informationen im Head-Bereich.
+    Neben den [[AnwendungMarkdown|Dialekten]] kann so auch die Geometrie der
+    Anwendung festlegt werden.\\
+    Mit der Meta-Information %%x-ua-window%% lassen sich über das Attribut
+    %%content%%, Lage (%%top%%, %%left%%, %%bottom%%, %%right%%) und Grösse
+    (%%height%%, %%width%%) der Anwendung angeben. Die Parameter werden durch
+    das Semikolon getrennt angegeben und unterstützen die für CSS üblichen Werte
+    in Prozent und Pixel.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    ::mark!&lt;meta http-equiv="x-ua-window":: ::mark!content::="::mark!top=0px; left=20%; width=80%; height=100%;::"&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    
+==Syntax|Syntax==
+
+  Der verwendete Dialekt ist die Folge fehlender Standards. In der Bemühung um
+  eine einfache sowie tolerante Syntax und in Anlehnung an bekannte Dialekte,
+  entstand dann dieser Kompromiss.\\
+  \\
+  Zum Verständnis der nachfolgenden Dokumentation eine kurze Übersicht der
+  verwendeten Begriffe.\\
+  \\
+  [|blank!
+  ||{style="padding-right:12px;"}**Dialekt**
+  ||Beschreibt die Gesamtheit einer beliebigen Wiki-Syntax.
+  |-
+  ||||&nbsp;
+  |-
+  ||{style="padding-right:12px;"}**Syntax**
+  ||Ist der Bezug auf den Befehls- bzw. Symbolumfang eines Dialekts.
+  |-
+  ||||&nbsp;
+  |-
+  ||{style="padding-right:12px;"}**Befehl**
+  ||Eingabe für Ausführung und Anwendung einer Funktion.
+  |-
+  ||||&nbsp;
+  |-
+  ||{style="padding-right:12px;"}**Symbol**
+  ||Alternativer Begriff für einen Befehl. Da sich Befehle aus mehreren
+    Bestandteilen zusammensetzen, wird in der vorliegenden Dokumentation
+    vorrangig dieser Begriff verwendet.
+  |-
+  ||||&nbsp;
+  |-
+  ||{style="padding-right:12px;"}**Ausgabe**
+  ||Visuelle Darstellung der Syntax.
+  |]
+
+  ===SyntaxFormate|Formate===
+
+    [|simple xl!
+    !!Syntax
+    !!Beschreibung
+    !!Ausgabe
+    ||%%*~~*fetter Text*~~*%%
+    ||fetter Text\\
+      \\
+      Überschneidungen mit der Syntax von Aufzählungen lassen sich wie folgt
+      umgehen:\\
+      \\
+      ::mark!%%~%%%%~%%%%~~*~~*%%::%%Text~~*~~*%%
+    ||**fetter Text**
+    |-
+    ||%%/~~/kursiver Text/~~/%%
+    ||kursiver Text
+    ||//kursiver Text//
+    |-
+    ||%%_~~_unterstrichener Text_~~_%%
+    ||unterstrichener Text
+    ||__unterstrichener Text__
+    |-
+    ||%%-~~-durchgestrichener Text-~~-%%
+    ||durchgestrichener Text
+    ||--durchgestrichener Text--
+    |-
+    ||%%~~%~~%Quelltext%~~%~~%%
+    ||Quelltext
+    ||%%Quelltext%%
+    |-
+    ||%%^~~^hochgestellter Text^~~^%%
+    ||hochgestellter Text
+    ||^^hochgestellter Text^^
+    |-
+    ||%%,~~,tiefgestellter Text,~~,%%
+    ||tiefgestellter Text
+    ||,,tiefgestellter Text,,
+    |-
+    ||%%:~~:individuell formatierter Text:~~:%%
+    ||individuell formatierter Text
+    ||::individuell formatierter Text::
+    |-
+    ||%%:~~:mark!markierter Text:~~:%%
+    ||markierter Text
+    ||::mark!markierter Text::
+    |]
+
+  ===SyntaxKonstrukte|Konstrukte===
+
+    [|simple xl!
+    !!Syntax
+    !!Beschreibung
+    !!Ausgabe
+    ||%%[~~"Zitat"~~]%%
+    ||Zitat
+    ||["Zitat"]
+    |-
+    ||%%[~~%Quelltext als Block%~~]%%
+    ||Quelltext als Block
+    ||[%Quelltext als Block%]
+    |-
+    ||%%[~~>Einrückung als Block<~~]%%
+    ||Einrückung als Block\\
+      Verschachtelung wird unterstützt
+    ||[>Einrückung als Block<]
+    |-
+    ||%%[~~:individuell formatierter Block:~~]%%
+    ||individuell formatierter Block
+    ||[:individuell formatierter Block:]
+    |-
+    ||%%[~~!~~-~~-Kommentar~~-~~-~~]%%
+    ||Kommentar
+    ||[!--Kommentar--](wird nicht ausgegeben)
+    |-
+    ||%%[~~[http://www.seanox.de/]~~]%%
+    ||externer Verweis (Link)\\
+      unterstützt werden folgende Protokolle:\\
+      %%http%%, %%https%%, %%ftp%%, %%file%%
+    ||[[http://www.seanox.de/]]
+    |-
+    ||%%[~~[http://www.seanox.de/|Seanox]~~]%%
+    ||externer Verweis mit alternativem Text
+    ||[[http://www.seanox.de/|Seanox]]
+    |-
+    ||%%[~~[8.4.3]~~]%%
+    ||interner Verweis\\
+      unterstützt werden Kapitel und Nummer, formatiert sowie
+      unformatiert
+    ||[[8.4.3]]
+    |-
+    ||%%[~~[8.4.3|siehe Kapitel 8.4.3]~~]%%
+    ||interner Verweis mit alternativem Text
+    ||[[8.4.3|siehe Kapitel 8.4.3]]
+    |-
+    ||{nowrap}%%[~~[BspTabAlt|siehe Beispiel]~~]%%
+    ||interner Verweis mit alternativem Kapitel und alternativem Text
+    ||[[BeispieleTabellenAlternierend|siehe Beispiel]]
+    |-
+    ||%%[~~[mail:dummy@no.mail]~~]%%
+    ||E-Mail-Adresse
+    ||[[mail:dummy@no.mail]]
+    |-
+    ||%%[~~[mail:dummy@no.mail|keine Mails]~~]%%
+    ||E-Mail-Adresse mit alternativem Text
+    ||[[mail:dummy@no.mail|keine Mails]]
+    |-
+    ||%%[~~[image:test.jpg]~~]%%
+    ||Einbetten eines externen Bildes
+    ||[[{width="80"}image:${WollAndTed}]]
+    |-
+    ||%%[~~[image:test.jpg|Woll&Ted]~~]%%
+    ||Einbetten eines externen Bildes mit Titel
+    ||[[{width="80"}image:${WollAndTed}|Woll&Ted]]
+    |-
+    ||%%[~~[media:test.mpg]~~]%%
+    ||Einbetten einer externen Media-Datei
+    ||[[{width="80" height="60" controller="false"}media:test.mpg]]
+    |-
+    ||%%[~~[media:test.mpg:nostart]~~]%%
+    ||Einbetten einer externen Media-Datei\\
+      ohne automatischen Start
+    ||[[{width="80" height="60" controller="false"}media:test.mpg:nostart]]
+    |-
+    ||%%[~~[media:test.mpg:hiden]~~]%%
+    ||Einbetten einer externen Media-Datei\\
+      ohne Ausgabe
+    ||(ohne Ausgabe)
+      [[{width="80" height="60" controller="false"}media:test.mpg:hiden]]
+    |-
+    ||%%[~~[media:test.mpg|Test-Video]~~]%%
+    ||Einbetten einer externen Media-Datei mit Titel
+    ||[[{width="80" height="60" controller="false"}media:test.mpg|Test-Video]]
+    |-
+    ||%%[~~+Gruppierung+~~]%%
+    ||Gruppierung
+    ||[+Gruppierung+]
+    |-
+    ||%%[~~+|Gruppierung|+~~]%%
+    ||Gruppierung mit Legende
+    ||[+|Gruppierung|+]
+    |-
+    ||%%[~~|Tabelle|~~]%%\\
+      %%~~!~~!Kopf-Zelle%%\\
+      %%|~~-Zeilenwechsel%%\\
+      %%|~~|Körper-Zelle%%\\
+      \\
+      %%[~~|%%\\
+      %%~~!~~!Kopf A!~~!Kopf B!~~!Kopf C%%\\
+      %%|~~-%%\\
+      %%|~~|Zelle 1A|~~|Zelle 1B|~~|Zelle 1C%%\\
+      %%|~~-%%\\
+      %%|~~|Zelle 2A|~~|Zelle 2B|~~|Zelle 2C%%\\
+      %%|~~]%%
+    ||Tabelle\\
+      Kopf-Zelle\\
+      Zeilenwechsel\\
+      Körper-Zelle\\
+      \\
+      einfache Tabelle
+    ||\\\\\\\\\\
+      [|simple!
+      !!Kopf A
+      !!Kopf B
+      !!Kopf C
+      |-
+      ||Zelle 1A
+      ||Zelle 1B
+      ||Zelle 1C
+      |-
+      ||Zelle 2A
+      ||Zelle 2B
+      ||Zelle 2C
+      |]
+    |-
+    ||%%[~~@interner Block@~~]%%
+    ||Block ohne Interpretation der Wiki-Syntax zum Einbetten von HTML
+    ||[@<i>interner Block</i>@]
+    |]
+
+  ===SyntaxDirektiven|Direktiven===
+
+    [|simple xl!
+    !!Syntax
+    !!Beschreibung
+    !!Ausgabe
+    ||{nowrap}%%=~~=Kapitel 1. Ordnung=~~=%%
+    ||Kapitel 1. Ordnung
+    ||{nowrap}<h1 style="white-space:nowrap;">Kapitel 1. Ordnung<~~/h1>
+    |-
+    ||{nowrap}%%=~~=~~=Kapitel 2. Ordnung=~~=~~=%%
+    ||Kapitel 2. Ordnung
+    ||{nowrap}<h2 style="white-space:nowrap;">Kapitel 2. Ordnung<~~/h2>
+    |-
+    ||{nowrap}%%=~~=~~=~~=Kapitel 3. Ordnung=~~=~~=~~=%%
+    ||Kapitel 3. Ordnung
+    ||{nowrap}<h3 style="white-space:nowrap;">Kapitel 3. Ordnung<~~/h3>
+    |-
+    ||{nowrap}%%=~~=~~=~~=~~=Kapitel 4. Ordnung=~~=~~=~~=~~=%%
+    ||Kapitel 4. Ordnung
+    ||{nowrap}<h4 style="white-space:nowrap;">Kapitel 4. Ordnung<~~/h4>
+    |-
+    ||{nowrap}%%=~~=~~=~~=~~=~~=Kapitel 5. Ordnung=~~=~~=~~=~~=~~=%%
+    ||Kapitel 5. Ordnung
+    ||{nowrap}<h5 style="white-space:nowrap;">Kapitel 5. Ordnung<~~/h5>
+    |-
+    ||{nowrap}%%=~~=~~=~~=~~=~~=~~=Kapitel 6. Ordnung=~~=~~=~~=~~=~~=~~=%%
+    ||Kapitel 6. Ordnung
+    ||{nowrap}<h6 style="white-space:nowrap;">Kapitel 6. Ordnung<~~/h6>
+    |-
+    ||%%* Ebene 1%%\\
+      %%*~~* Ebene 2%%\\
+      %%*~~*~~* Ebene 3%%\\
+      %%*~~*~~*~~* ...%%
+    ||Aufzählung\\
+      \\
+      ~~**Wichtig** - Bei dieser Direktive wurde auf einleitende und
+      abschliessende Blocksymbole verzichtet. Ist das erste interpretierbare
+      Zeichen einer Zeile ein %%*%%, liegt eine Aufzählung vor.\\
+      \\
+      Überschneidungen mit der Syntax vom Format *~~*fett*~~* am Zeilenanfang
+      lassen sich wie folgt umgehen:\\
+      \\
+      ::mark!%%~%%%%~%%%%~~*~~*%%::%%Text~~*~~*%%
+    ||~~
+      * Ebene 1
+      ** Ebene 2
+      *** Ebene 3
+      **** ...
+    |-
+    ||%%# Punkt 1%%\\
+      %%# Punkt 2%%\\
+      %%# Punkt 3%%\\
+      %%# ...%%
+    ||(nummerierte) Liste\\
+      \\
+      ~~**Wichtig** - Bei dieser Direktive wurde auf einleitende und
+      abschliessende Blocksymbole verzichtet. Ist das erste interpretierbare
+      Zeichen einer Zeile ein %%#%%, liegt ein Listeneintrag vor.
+    ||~~
+      # Punkt 1
+      # Punkt 2
+      # Punkt 3
+      # ...
+    |-
+    ||%%\~~\%%
+    ||||Zeilenumbruch
+    |-
+    ||%%-~~-~~-%%
+    ||horizontale Linie
+    ||~~---
+    |-
+    ||%%~%%%%~%%
+    ||Trennzeichen
+    ||~~(keine Ausgabe)
+    |-
+    ||%%~%%%%~%%%%~%%
+    ||Zeilenfortführung in der Folgezeile
+    ||(keine direkte Ausgabe)
+    |-
+    ||%%~%%%%~%%%%~%%%%~%%
+    ||Zeilenumbruch ohne führende Leerzeichen in der Folgezeile
+    ||(keine direkte Ausgabe)
+    |-
+    ||{nowrap}%%@%%%%@Text wird nicht interpretiert@%%%%@%%
+    ||Text wird nicht interpretiert
+    ||Text wird nicht interpretiert
+    |]
+
+  ===SyntaxZusätze|Zusätze===
+
+    ====SyntaxZusätzeKapitelnummerierung|Kapitelnummerierung====
+
+      Die Nummerierung der Kapitel erfolgt automatisch. Das zu verwendende
+      Format wird dazu direkt nach dem ersten Kapitel-Symbol angegeben. Ohne
+      Angabe wird die Ausgabe unterdrückt, wobei die Unterdrückung im
+      Inhaltsverzeichnis nicht möglich ist. Als Standardformat wird die
+      numerische Nummerierung verwendet.\\
+      \\
+      [|simple xl!
+      !!Syntax
+      !!Beschreibung
+      ||%%=~~=Kapitel=~~=%%
+      ||Kapitel ohne Nummerierung
+      |-
+      ||%%=~~=#Kapitel=~~=%%
+      ||Kapitel mit numerischer Nummerierung
+      |-
+      ||%%=~~=##Kapitel=~~=%%
+      ||Kapitel mit alphabetischer Nummerierung
+      |-
+      ||%%=~~=###Kapitel=~~=%%
+      ||Kapitel mit römischer Nummerierung
+      |]
+
+    ====SyntaxZusätzeAlternativeKapitelnamen|Alternative Kapitelnamen====
+
+      Zur Erleichterung interner Verweise, kann einem Kapitel ein alternativer
+      Name zugewiesen werden. Dieser wird direkt nach dem einleitenden Symbol
+      vom Kapitel oder bei Verwendung der Nummerierung, nach dieser angegeben
+      und durch den Trennstrich vom eigentlichen Titel getrennt. Alternative
+      Namen werden nicht angezeigt, können aber in internen Verweisen (Links)
+      wie die Angabe des Kapitels oder der
+      Nummerierung verwendet werden.\\
+      \\
+      [|simple xl!
+      !!Syntax
+      !!Beschreibung
+      ||%%=~~=Kapitel=~~=%%
+      ||Kapitel ohne alternativen Namen
+      |-
+      ||%%=~~=#Kapitel=~~=%%
+      ||Kapitel mit alternativen Namen
+      |-
+      ||%%=~~=#KapAltName|Kapitel=~~=%%
+      ||Kapitel mit Nummerierung und alternativen Namen
+      |]
+
+    ====SyntaxZusätzeCssZuweisung|CSS-Zuweisung====
+
+      Jedem Befehl kann eine alternative bzw. zusätzliche CSS-Klasse zugewiesen
+      werden. Dazu wird die Erweiterung der CSS-Klasse(n) direkt nach dem ersten
+      Symbol angegeben und durch %%!!%% begrenzt. Zudem kann die Zuweisung über
+      [[SyntaxZusätzeZusätzlicheAttribute|zusätzliche Attribute]]
+      erfolgen.\\
+      \\
+      [|simple xl!
+      !!Syntax
+      !!Beschreibung
+      !!Ausgabe
+      ||%%-~~-durchgestrichener Text-~~-%%
+      ||einfache Syntax
+      ||--durchgestrichener Text--
+      |-
+      ||%%-~~-red!durchgestrichener Text-~~-%%
+      ||um die CSS-Klasse %%red%% erweiterte Syntax
+      ||--red!durchgestrichener Text--
+      |-
+      ||%%-~~-red bold!durchgestrichener Text-~~-%%
+      ||um die CSS-Klassen %%red%%, %%bold%% erweiterte Syntax
+      ||--red bold!durchgestrichener Text--
+      |-
+      ||%%-~~-red!{class="bold" style="color:green"}durchgestrichener Text-~~-%%
+      ||um die CSS-Klassen %%red%%, %%bold%% erweiterte Syntax
+      ||--red!{class="bold" style="color:green"}durchgestrichener Text--
+      |]
+
+    ====SyntaxZusätzeZusätzlicheAttribute|Zusätzliche Attribute====
+
+      Jedem Befehl können weitere Attribute hinzugefügt werden. Die Angaben
+      werden in geschweiften Klammern gefasst und direkt mit dem ersten
+      Befehlssymbol nach der [[SyntaxZusätzeCssZuweisung|CSS-Zuweisung]]
+      angegeben. In den Klammern lassen sich alle Möglichkeiten vom HTML nutzen,
+      womit die Angaben von HTML-Attributen,
+      [[SyntaxZusätzeCssZuweisung|CSS-Zuweisungen]] und auch
+      [[BeispieleJavaScriptEinbetten|JavaScript]] möglich ist.\\
+      \\
+      [|simple xl!
+      !!Syntax
+      !!Beschreibung
+      !!Ausgabe
+      ||{nowrap}~~
+        %%[~~[{width="40"}image:test.jpg]~~]%%\\
+        %%[~~[{width="60"}image:test.jpg]~~]%%\\
+        %%[~~[{width="80"}image:test.jpg]~~]%%\\
+      ||um die Angabe der Weite erweiterte Syntax
+      ||{nowrap}~~
+        [[{width="40"}image:${WollAndTed}]]
+        [[{width="60"}image:${WollAndTed}]]
+        [[{width="80"}image:${WollAndTed}]]
+      |]
+
+    ====Funktionskapitel====
+
+      Diese Sonderform bindet ein Kapitel an eine WoTeXX-Funktion. Wie normale
+      Kapitel auch, lässt sich ein solches an beliebiger Stelle und Tiefe
+      verwenden. Im Unterschied zum Standardkapitel kann diesem für den
+      Navigationsbaum ein eigenes Symbol zugewiesen werden. Zudem werden mit dem
+      Öffnen eines Funktionskapitels immer dessen %%Call%%-Methode, zur Ansicht
+      die %%Prepare%%-Methode und beim Wechsel der Ansicht zu einem anderen
+      Kapitel die %%Blind%%-Methode aufgerufen. Mit der %%Call%%-Methode kann in
+      der Implementierung über den Rückgabewert %%false%% die Anzeige des
+      Kapitels unterdrückt werden. Die %%Prepare%%-Methode wird dann mit der
+      Anzeige des Kapitels aufgerufen und ist für die Vorbelegung vom Inhalt
+      gedacht, da dieser beim Wechsel der Hauptkapitel flüchtig
+      ist.\\
+      \\
+      Funktionskapitel werden über den Alias erkannt. Dieser muss immer mit
+      %%Macro%% beginnen und gleichnamig zum bereitgestellten Objekt sein. Die
+      Implementierung der %%Call%%-, %%Prepare%%- und %%Blind%%-Methoden ist
+      optional, ebenso wie die gesonderte Darstellung im Navigationsbaum. Diese
+      kann durch individuelle Templates im Format %%ConextNodeMacroName%% oder
+      %%ConextNodeMacroNameOpen%% sowie %%ConextNodeMacroNameClose%% definiert
+      werden.\\
+      \\
+      Mit der Funktion [[Suchen]] ist bereits ein Beispiel zur Implementierung
+      enthalten.
+
+==Beispiele|Beispiele==
+
+  Da einige Konstrukte recht komplex und die Syntax nicht immer intuitiv ist,
+  lassen sich diese besser im Detail oder an Beispielen erklären.
+
+  ===BeispieleKapitel|Kapitel==
+
+    ====BeispieleKapitelEinrückung|Einrückung====
+
+      Die Einrückung der Kapitel erfolgt zweistufig. In der ersten Stufe erfolgt
+      die Einrückung der Kapitelüberschrift und in der zweiten Stufe die
+      Einrückung des Inhalts. Für beide Stufen lässt sich die horizontale
+      Laufweite allgemeingültig per CSS definieren.\\
+      \\
+      Quelltext:\\
+      \\
+      [%~~~~
+        ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+        ~~&lt;html&gt;~~~~
+        ~~  &lt;head&gt;~~~~
+        ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+        ~~    &lt;script type="text/wiki"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    &lt;script type="text/javascript"&gt;~~~~
+        ~~      ...~~~~
+        ~~    &lt;/script&gt;~~~~
+        ~~    ::mark!&lt;style type="text/css"&gt;::~~~~
+        ~~      ...~~~~
+        ~~      ::mark!div.view span.chapter  {padding...}::~~~~
+        ~~      ::mark!div.view span.chapter1 {padding...}::~~~~
+        ~~      ::mark!...::~~~~
+        ~~      ::mark!div.view span.chapter6 {padding...}::~~~~
+        ~~      ::mark!div.view div.chapter   {padding...}::~~~~
+        ~~      ::mark!div.view div.chapter1  {padding...}::~~~~
+        ~~      ::mark!...::~~~~
+        ~~      ::mark!div.view div.chapter6  {padding...}::~~~~
+        ~~      ::mark!div.view div.content   {padding...}::~~~~
+        ~~      ::mark!div.view div.content1  {padding...}::~~~~
+        ~~      ::mark!...::~~~~
+        ~~      ::mark!div.view div.content6  {padding...}::~~~~
+        ~~      ...~~~~
+        ~~    ::mark!&lt;/style&gt;::~~~~
+        ~~  &lt;/head&gt;~~~~
+        ~~  &lt;body&gt;~~~~
+        ~~    ...~~~~
+        ~~  &lt;/body&gt;~~~~
+        ~~&lt;/html&gt;~~~~
+      %]
+      \\
+      [|simple!
+      !!!!StyleSheet
+      !!Beschreibung
+      ||%%div.view span.chapter%%
+      ||&nbsp;
+      ||Abstand allgemein zwischen Kapitelnummer und Titel
+      |-
+      ||%%div.view span.chapter1...6%%
+      ||&nbsp;
+      ||Abstand zwischen Kapitelnummer und Titel entsprechend der 1. - 6.
+        Ordnung
+      |-
+      ||%%div.view div.chapter%%
+      ||&nbsp;
+      ||Abstand allgemein der Kapitelüberschrift zum vorangehenden Kapitel
+      |-
+      ||%%div.view div.chapter1...6%%
+      ||&nbsp;
+      ||Abstand der Kapitelüberschrift zum vorangehenden Kapitel entsprechend
+      der 1. - 6. Ordnung
+      |-
+      ||%%div.view div.content%%
+      ||&nbsp;
+      ||Abstand allgemein vom Kapitelinhalt zur Kapitelüberschrift
+      |-
+      ||%%div.view div.content1...6%%
+      ||&nbsp;
+      ||Abstand vom Kapitelinhalt zur Kapitelüberschrift entsprechend der
+        1. - 6. Ordnung
+      |]
+
+    ====BeispieleKapitelAusblenden|Ausblenden====
+
+      Meist ist für die Einstiegsseite keine Kapitelangabe gewünscht. In diesem
+      Fall lässt sich der Titel per CSS ausblenden.\\
+      \\
+      Quelltext:\\
+      \\
+      [%=~~=::mark!~~{style="display:none;"}::Titel=~~=%]
+
+    ====BeispieleKapitelAnker|Anker====
+
+      Mit der Option %%@%% lassen sich Kapitel als Anker kennzeichnen. Dies kann
+      sinnvoll sein, wenn in Konstrukten kein Kapitel aber in der Navigation ein
+      Verweis auf eine spezielle Passage erscheinen soll. Die Form der Kapitel
+      kann wie ein geschlossenes Kapitel betrachtet werden, da sich in diesem
+      keine weiteren Unterkapitel erstellen lassen.\\
+      \\
+      Quelltext:\\
+      \\
+      [%=~~=~~=::mark!@::#simple!{style:color:red}Alias|Titel=~~=~~=%]
+
+  ===BeispieleFormate|Formate==
+
+    ====BeispieleFormateIndividuell|Individuell====
+
+      Textpassagen lassen sich individuell formatieren. Dazu können diesen
+      [[SyntaxZusätzeCssZuweisung|CSS-Klassen]] und
+      [[SyntaxZusätzeZusätzlicheAttribute|zusätzliche Attribute]] zugewiesen
+      werden.\\
+      \\
+      Beispiel:\\
+      \\
+      ::blue bold border!{style="color:#0070FF;"}&nbsp;Blau&nbsp;::::bold!{style="background-color:#0070FF;color:#FFFFFF;border:1px solid #0070FF;"}&nbsp;Weiss&nbsp;::\\
+      \\
+      Quelltext:\\
+      \\
+      [%::mark!:~~:blue bold border!::&amp;nbsp;Blau&amp;nbsp;::mark!:~~:~~::~~~~
+      ::mark!:~~:bold!{style="background-color:blue;color:white;border:1px solid blue;"}::&amp;nbsp;Weiss&amp;nbsp;::mark!:~~:~~::%]
+
+    ====BeispieleFormateMarkieren|Markieren====
+
+      Das Markieren von Textpassagen ist mit dem
+      [[BeispieleFormateIndividuell|individuellen Format]] %%mark%% oder einem
+      selbstdefiniertem möglich.\\
+      \\
+      Beispiel:\\
+      \\
+      In den Bespielen sind alle ::mark!relevanten Stellen::
+      gekennzeichnet.\\
+      \\
+      Quelltext:\\
+      \\
+      [%In den Bespielen sind alle ::mark!:~~:mark!::relevanten Stellen::mark!:~~:~~:: gekennzeichnet.%]
+      \\
+      Formatierung:\\
+      \\
+      %%div.view span.mark%%\\
+      %%div.view pre span.mark%%
+
+  ===BeispieleGruppierung|Gruppierung===
+
+    ====BeispieleGruppierungVerschachteln|Verschachteln====
+
+      Die Elemente zur Gruppierung lassen sich beliebig verschachteln.\\
+      \\
+      Beispiel:\\
+      \\
+      [+|Bereich A|
+        [+|Bereich A.A|+]
+        [+|Bereich A.B|+]+]
+      \\
+      Quelltext:\\
+      \\
+      [%::mark![~~+|Bereich A|::~~~~
+        ::mark![~~+|Bereich A.A|+~~]::~~~~
+        ::mark![~~+|Bereich A.B|+~~]+~~]::%]
+
+  ===BeispieleTabellen|Tabellen===
+
+    ====BeispieleTabellenSchreibweise|Schreibweise====
+
+      Die Syntax für Tabellen ist recht komplex und dennoch flexibel in der
+      Schreibweise. Die nachfolgenden Beispiele stellen lediglich einige der
+      Möglichkeiten vor.\\
+      \\
+      Beispiel für kompakte Schreibweise:\\
+      \\
+      [%[~~|simple!~~~~
+        !!Kopf A!!Kopf B~~~~
+        ||Zeile 1A||Zeile 1B|-~~~~
+        ||Zeile 2A||Zeile 2B|-~~~~
+        ||Zeile 3A||Zeile 3B|~~]%]
+      \\
+      Beispiel für gestreckte Schreibweise:\\
+      \\
+      [%[~~|simple!~~~~
+        !!Kopf A~~~~
+        !!Kopf B~~~~
+        |-~~~~
+        ||Zeile 1A~~~~
+        ||Zeile 1B~~~~
+        |-~~~~
+        ||Zeile 2A~~~~
+        ||Zeile 2B~~~~
+        |-~~~~
+        ||Zeile 3A~~~~
+        ||Zeile 3B~~~~
+        |~~]%]
+
+    ====BeispieleTabellenTextausrichtung|Textausrichtung====
+
+      In Tabellen lässt sich die horizontale Ausrichtung für die Zellen in Kopf
+      und Körper direkt angeben. Entscheidend hierfür ist die Anzahl von
+      Leerzeichen nach dem Symbol für die Zellen. Nach dieser Angabe werden den
+      Zellen automatisch die CSS-Klassen %%left%%, %%center%% oder
+      %%right%% zugewiesen.\\
+      \\
+      Beispiel:\\
+      \\
+      [|simple!
+      !!Beschreibung!! Ausgabe
+      ||kein Leerzeichen||links|-
+      ||1 Leerzeichen|| mittig|-
+      ||2 Leerzeichen||  rechts|]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|simple!~~~~
+        !!Beschreibung::mark!!! ::Ausgabe~~~~
+        ||kein Leerzeichen::mark!||::links|-~~~~
+        ||1 Leerzeichen::mark!|| ::mittig|-~~~~
+        ||2 Leerzeichen::mark!||  ::rechts|~~]%]
+      \\
+      Formatierung:\\
+      \\
+      %%div.view th.left%%\\
+      %%div.view th.center%%\\
+      %%div.view th.right%%\\
+      %%div.view td.left%%\\
+      %%div.view td.center%%\\
+      %%div.view td.right%%
+
+    ====BeispieleTabellenAlternierend|Alternierend====
+
+      Jede durch die Wiki-Syntax definierte Tabelle ist alternierend. Dazu
+      werden den Zeilen im Wechsel automatisch die CSS-Klassen %%light%% und
+      %%dark%% zugewiesen. Diese beiden Klassen sind jedoch nur für den
+      Tabellen-Style %%alternate%% definiert, wodurch diese Formatierung bei
+      anderen Tabellen-Styles ausbleibt.\\
+      \\
+      Beispiel:\\
+      \\
+      [|simple alternate!
+      !!Messpunkt!!  Druck!!  Temperatur
+      ||Speisewasser vor Kesselspeisepumpe||  10kp||  175°C|-
+      ||Speisewasser nach Kesselspeisepumpe||  125kp||  200°C|-
+      ||Speisewasser nach Hochdruckvorwärmer||  125kp||  275°C|-
+      ||Speisewasser Kesseltrommel||  125kp||  300°C|-
+      ||Dampf vor Überhitzer||  135kp||  475°C|-
+      ||Dampf nach Überhitzer||  150kp||  550°C|]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|simple ::mark!alternate!::~~~~
+        !!Messpunkt!!  Druck!!  Temperatur~~~~
+        ||Speisewasser vor Kesselspeisepumpe||  10kp ||  175°C|-~~~~
+        ||Speisewasser nach Kesselspeisepumpe||  125kp||  200°C|-~~~~
+        ||Speisewasser nach Hochdruckvorwärmer||  125kp||  275°C|-~~~~
+        ||Speisewasser Kesseltrommel||  125kp||  300°C|-~~~~
+        ||Dampf vor Überhitzer||  135kp||  475°C|-~~~~
+        ||Dampf nach Überhitzer||  150kp||  550°C|~~]%]
+      \\
+      Formatierung:\\
+      \\
+      %%div.view table.alternate%%\\
+      %%div.view table.alternate td.dark%%\\
+      %%div.view table.alternate td.light%%
+
+    ====BeispieleTabellenVerschachtelt|Verschachtelt====
+
+      Tabellen lassen sich verschachteln. Neben der Tabellenstruktur, betrifft
+      dies auch das CSS, was u.U. zu entsprechenden Effekten führt.\\
+      \\
+      Beispiel:\\
+      \\
+      [|simple!
+      !! Tabelle A - Kopf A!! Tabelle A - Kopf B!! Tabelle A - Kopf C
+      || Tabelle A - Zelle 1A || Tabelle A - Zelle 1B|| Tabelle A - Zelle 1C|-
+      || Tabelle A - Zelle 2A ||
+        [|grid!
+        !! Tabelle B - Kopf A
+        || Tabelle B - Zelle 1A|-
+        || Tabelle B - Zelle 2A|-
+        || Tabelle B - Zelle 3A|]
+      || Tabelle A - Zelle 2C|-
+      || Tabelle A - Zelle 3A || Tabelle A - Zelle 3B|| Tabelle A - Zelle 3C|]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|simple!~~~~
+      !! Tabelle A - Kopf A!! Tabelle A - Kopf B!! Tabelle A - Kopf C~~~~
+      || Tabelle A - Zelle 1A || Tabelle A - Zelle 1B|| Tabelle A - Zelle 1C|-~~~~
+      || Tabelle A - Zelle 2A ||~~~~
+        ~~  ::mark![~~|simple!::~~~~
+        ~~  ::mark!!! Tabelle B - Kopf AC::~~~~
+        ~~  ::mark!|| Tabelle B - Zelle 1A|-::~~~~
+        ~~  ::mark!|| Tabelle B - Zelle 2A|-::~~~~
+        ~~  ::mark!|| Tabelle B - Zelle 3A|~~]::~~~~
+      || Tabelle A - Zelle 2C|-~~~~
+      || Tabelle A - Zelle 3A || Tabelle A - Zelle 3B|| Tabelle A - Zelle 3C|~~]%]
+
+    ====BeispieleTabellenZellenVerbinden|Zellen verbinden====
+
+      In Tabellen lässt sich die horizontale und vertikale Laufweite der Zellen
+      in Kopf und Körper direkt angeben. Entscheidend hierfür ist die Anzahl von
+      direkt aufeinanderfolgenden Spalten-Symbole.\\
+      \\
+      Beispiel für horizontales Verbinden:\\
+      \\
+      [|grid!
+      !! Kopf A!! Kopf B!!!! Kopf C - D!! Kopf E
+      |||| Zelle 1A - 1B|| Zelle 1C|| Zelle 1D|| Zelle 1E|-
+      |||||| Zelle 2A - 2C|| Zelle 2D|| Zelle 2E|-
+      || Zelle 3A|||||||| Zelle 3B - 3E|]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|grid!~~~~
+        !! Kopf A!! Kopf B !!!! Kopf C - D!! Kopf E~~~~
+        ::mark!||||:: Zelle 1A - 1B||Zeile 1C||Zeile 1D||Zeile 1E|-~~~~
+        ::mark!||||||:: Zelle 2A - 2C||Zeile 2D||Zeile 2E|-~~~~
+        || Zelle 3A::mark!||||||||:: Zelle 3B - 3E|~~]%]
+      \\
+      Beispiel für vertikales Verbinden:\\
+      \\
+      [|grid!
+      !! Kopf A!! Kopf B!! Kopf C
+      || Zelle 1A ||{rowspan="2"} Zelle 1B - 2B ||{rowspan="3"} Zelle 1C - 3C|-
+      || Zelle 2A |-
+      || Zelle 3A || Zelle 3B|]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|grid!~~~~
+        !! Kopf A!! Kopf B!! Kopf C~~~~
+        || Zelle 1A ||::mark!~~{rowspan="2"}:: Zelle 1B - 2B ||::mark!~~{rowspan="3"}:: Zelle 1C - 3C|-~~~~
+        || Zelle 2A |-~~~~
+        || Zelle 3A || Zelle 3B|~~]%]
+
+    ====BeispieleTabellenAufzählung|Aufzählung====
+
+      Da die Aufzählungen als Direktive umgesetzt wurden und nur über das
+      entsprechende Symbol am Zeilenanfang erkannt werden, ist in Tabellen wie
+      auch in allen anderen Konstrukten die folgende Syntax zu verwenden.\\
+      \\
+      [|grid!
+      !!Kopf
+      ||~~
+        * Ebene 1
+        ** Ebene 2
+        *** Ebene 3
+      |]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|grid!~~~~
+        !!Kopf~~~~
+        ||::mark!%%~%%%%~%%::~~~~
+        ::mark!~~*:: Ebene 1~~~~
+        ::mark!~~*~~*:: Ebene 2~~~~
+        ::mark!~~*~~*~~*:: Ebene 3~~~~
+        |~~]%]
+      \\
+      Durch die Verwendung der Tilden %%~%%%%~%% wird die mittige
+      Textausrichtung unterdrückt. Die Verwendung der Aufzählung beginnt dann in
+      der Folgezeile.
+
+    ====BeispieleTabellenListe|Liste====
+
+      Da die Listen als Direktive umgesetzt wurden und nur über das
+      entsprechende Symbol am Zeilenanfang erkannt werden, ist in Tabellen wie
+      auch in allen anderen Konstrukten die folgende Syntax zu verwenden.\\
+      \\
+      [|grid!
+      !!Kopf
+      ||~~
+        # Punkt 1
+        # Punkt 2
+        # Punkt 3
+      |]
+      \\
+      Quelltext:\\
+      \\
+      [%[~~|grid!~~~~
+        !!Kopf~~~~
+        ||::mark!%%~%%%%~%%::~~~~
+        ::mark!~~#:: Punkt 1~~~~
+        ::mark!~~#:: Punkt 2~~~~
+        ::mark!~~#:: Punkt 3~~~~
+        |~~]%]
+      \\
+      Durch die Verwendung der Tilden %%~%%%%~%% wird die mittige
+      Textausrichtung unterdrückt. Die Verwendung der Liste beginnt dann in der
+      Folgezeile.
+
+  ===BeispieleAufzählung|Aufzählung===
+
+    ====BeispieleAufzählungDefinieren|Definieren====
+
+      Für Aufzählungen lässt sich u.a. der Typ festlegen, wobei die Gültigkeit
+      das aktuelle Element mit all seinen tieferliegenden Unterelementen
+      einbezieht.\\
+      \\
+      Beispiel für die Angabe vom Typ:\\
+
+      *{type="circle"} Ebene 1 (%%circle%%)
+      **{type="disc"} Ebene 2 (%%disc%%)
+      ***{type="square"} Ebene 3 (%%square%%)
+
+      Quelltext:\\
+      \\
+      [%::mark!~~*{type="circle"}:: Ebene 1 (%~~%circle%~~%)~~~~
+        ::mark!~~*~~*{type="disc"}:: Ebene 2 (%~~%disc%~~%)~~~~
+        ::mark!~~*~~*~~*{type="square"}:: Ebene 3 (%~~%square%~~%)%]
+
+    ====BeispieleAufzählungFortsetzen|Fortsetzen====
+
+      Aufzählungen können jederzeit unterbrochen und an anderer Stelle
+      fortgeführt werden.\\
+      \\
+      Beispiel:\\
+
+      * Ebene 1
+      ** Ebene 2
+      *** Ebene 3
+      Unterbrechung durch Zeile A\\
+      Unterbrechung durch Zeile B\\
+      Unterbrechung durch Zeile C\\
+      **** Ebene 4
+      ***** Ebene 5
+      ****** Ebene 6
+
+      Quelltext:\\
+      \\
+      [%~~* Ebene 1~~~~
+        ~~*~~* Ebene 2~~~~
+        ~~*~~*~~* Ebene 3~~~~
+        ::mark!Unterbrechung durch Zeile A::~~~~
+        ::mark!Unterbrechung durch Zeile B::~~~~
+        ::mark!Unterbrechung durch Zeile C::~~~~
+        ~~*~~*~~*~~* Ebene 4~~~~
+        ~~*~~*~~*~~*~~* Ebene 5~~~~
+        ~~*~~*~~*~~*~~*~~* Ebene 6%]
+
+    ====BeispieleAufzählungFormatieren|Formatieren====
+
+      Die Formatierung kann über [[SyntaxZusätzeCssZuweisung|CSS-Klassen]] und
+      [[SyntaxZusätzeZusätzlicheAttribute|zusätzliche Attribute]] erfolgen,
+      wobei die Gültigkeit das aktuelle Element mit all seinen tieferliegenden
+      Unterelementen einbezieht.
+
+      Beispiel:\\
+
+      * Ebene 1
+      * red!Ebene 1
+      * Ebene 1
+      * blue!{style="font-weight:bold;"}Ebene 1
+      ** Ebene 2
+      *** Ebene 3
+      * Ebene 1
+
+      Quelltext:\\
+      \\
+      [%~~~~
+        ~~* Ebene 1~~~~
+        ~~* ::mark!red!::Ebene 1~~~~
+        ~~* Ebene 1~~~~
+        ~~* ::mark!blue!{style="font-weight:bold;"}::Ebene 1~~~~
+        ~~*~~* Ebene 2~~~~
+        ~~*~~*~~* Ebene 3~~~~
+        ~~* Ebene 1%]
+
+  ===BeispieleListe|Liste===
+
+    ====BeispieleListeDefinieren|Definieren====
+
+      Für Listen lassen sich u.a. Typ und Startwert festlegen, wobei die
+      Gültigkeit das aktuelle Element mit all seinen tieferliegenden
+      Unterelementen einbezieht.\\
+      \\
+      Beispiel für die Angabe vom Typ:\\
+
+      #{type="I"} Punkt 1 (%%Type: I%%)
+      # Punkt 2
+      # Punkt 3
+      ~~
+      #{type="A"} Punkt 1 (%%Type: A%%)
+      # Punkt 2
+      # Punkt 3
+
+      Quelltext:\\
+      \\
+      [%~~#~~::mark!~~{type="I"}:: Punkt 1 (%~~%Type: I%~~%)~~~~
+        ~~# Punkt 2~~~~
+        ~~# Punkt 3%]
+      \\
+      Beispiel für die Angabe Typ und Startwert:\\
+
+      #{type="I" start="10"} Punkt 1 (%%Type: I, Start: 10%%)
+      # Punkt 2
+      # Punkt 3
+      ~~
+      #{type="A" start="10"} Punkt 1 (%%Type: A, Start: 10%%)
+      # Punkt 2
+      # Punkt 3
+
+      Quelltext:\\
+      \\
+      [%~~#~~::mark!~~{type="I" start="10"}:: Punkt 1 (%~~%Type: I%~~%)~~~~
+        ~~# Punkt 2~~~~
+        ~~# Punkt 3%]
+
+    ====BeispieleListeFortsetzen|Fortsetzen====
+
+      Listen können jederzeit unterbrochen und an anderer Stelle fortgeführt
+      werden, wobei der Zähler mit jeder Unterbrechung zurückgesetzt wird. Soll
+      die Zählung fortgesetzt werden, ist der Startwert mit der fortgeführten
+      Liste entsprechend zu setzten.\\
+      \\
+      Beispiel ohne Fortführung des Zählers:\\
+      # Punkt 1
+      # Punkt 2
+      # Punkt 3
+      Unterbrechung durch Zeile A\\
+      Unterbrechung durch Zeile B\\
+      Unterbrechung durch Zeile C\\
+      # Punkt 1
+      # Punkt 2
+      # Punkt 3
+
+      Quelltext:\\
+      \\
+      [%~~# Punkt 1~~~~
+        ~~# Punkt 2~~~~
+        ~~# Punkt 3~~~~
+        ::mark!Unterbrechung durch Zeile A::~~~~
+        ::mark!Unterbrechung durch Zeile B::~~~~
+        ::mark!Unterbrechung durch Zeile C::~~~~
+        ~~# Punkt 1~~~~
+        ~~# Punkt 2~~~~
+        ~~# Punkt 3%]
+      \\
+      Beispiel mit Fortführung des Zählers:\\
+      # Punkt 1
+      # Punkt 2
+      # Punkt 3
+      Unterbrechung durch Zeile A\\
+      Unterbrechung durch Zeile B\\
+      Unterbrechung durch Zeile C\\
+      #{start="4"} Punkt 4
+      # Punkt 5
+      # Punkt 6
+
+      Quelltext:\\
+      \\
+      [%~~# Punkt 1~~~~
+        ~~# Punkt 2~~~~
+        ~~# Punkt 3~~~~
+        ::mark!Unterbrechung durch Zeile A::~~~~
+        ::mark!Unterbrechung durch Zeile B::~~~~
+        ::mark!Unterbrechung durch Zeile C::~~~~
+        ~~#::mark!~~{start="4"}:: Punkt 4~~~~
+        ~~# Punkt 5~~~~
+        ~~# Punkt 6%]
+
+    ====BeispieleListeFormatieren|Formatieren====
+
+      Die Formatierung kann über [[SyntaxZusätzeCssZuweisung|CSS-Klassen]] und
+      [[SyntaxZusätzeZusätzlicheAttribute|zusätzliche Attribute]] erfolgen,
+      wobei die Gültigkeit das aktuelle Element mit all seinen tieferliegenden
+      Unterelementen einbezieht.
+
+      Beispiel:\\
+      # Punkt 1
+      # red!Punkt 2
+      # Punkt 3
+      # blue!{style="font-weight:bold;"}Punkt 4
+      ## Punkt 4.1
+      ### Punkt 4.1.1
+      # Punkt 5
+
+      Quelltext:\\
+      \\
+      [%~~~ ~~~~
+        ~~# Ebene 1~~~~
+        ~~# ::mark!red!::Ebene 1~~~~
+        ~~# Ebene 1~~~~
+        ~~# ::mark!blue!{style="font-weight:bold;"}::Ebene 1~~~~
+        ~~#~~# Ebene 2~~~~
+        ~~#~~#~~# Ebene 3 ~~~~
+        ~~# Ebene 1%]
+
+  ===BeispieleHtml|HTML===
+
+    ====BeispieleHtmlEinbetten|Einbetten====
+
+      Auch das direkte Verwenden der HTML-Syntax ist möglich. Bei der Verwendung
+      wird jedoch das Ausschalten des Wiki-Interpreter für die betreffenden
+      Passagen empfohlen. Alternativ kann überschneidende Syntax auch durch das
+      Maskieren mit dem Trennzeichen vor der Ausführung durch den
+      Wiki-Interpreter geschützt werden.\\
+      \\
+      Beispiel:\\
+      \\
+      <b>Hier wird direkt die HTML-Syntax verwendet.<~~/b>\\
+      \\
+      Quelltext:\\
+      \\
+      [%::mark!&lt;b&gt;::Hier wird direkt die HTML-Syntax verwendet.::mark!&lt;/b&gt;::%]\\
+
+  ===BeispieleJavaScript|JavaScript===
+
+    ====BeispieleJavaScriptEinbetten|Einbetten====
+
+      Auch wenn die Angabe von JavaScript mit der Wiki-Syntax möglich ist, wird
+      der eingefügte Code nicht berücksichtigt. Lediglich über
+      [[SyntaxZusätzeZusätzlicheAttribute|zusätzliche Attribute]] sind das
+      Einbetten bzw. der Aufruf mit einem Wiki-Befehl möglich.\\
+      \\
+      Beispiel:\\
+      \\
+      [[{onclick="MessageDialog.show(null, 'Message...', null, MessageDialog.hide)"}Klick mich ...]]\\
+      \\
+      Quelltext:\\
+      \\
+      [%[~~[~~::mark!~~{onclick="MessageDialog.show(null, 'Message...', null, MessageDialog.hide)"}::Klick mich ...]~~]%]\\
+
+  ===BeispieleAufruf|Aufruf===
+
+    ====BeispieleAufrufSensitiv|Sensitiv====
+
+      Beim Einsatz als Hilfe spielt der direkte Aufruf von Kapiteln eine
+      wichtige Rolle. Hierzu wird das anzuzeigende Kapitel einfach als Query
+      beim Aufruf übergeben. Dabei werden der Name sowie die formatierte und
+      unformatierte Kapitel-Nummer unterstützt.\\
+      \\
+      Beispiele:\\
+      \\
+      <a class="link" href="?CSS-Zuweisung">wotexx.html?CSS-Zuweisung<~~/a>\\
+      <a class="link" href="?8.4.3">wotexx.html?8.4.3<~~/a>\\
+      <a class="link" href="?H.D.C">wotexx.html?H.D.C<~~/a>\\
+      <a class="link" href="?BeispieleTabellenAlternierend">
+        wotexx.html?BeispieleTabellenAlternierend<~~/a>
+
+==Entwicklung|Entwicklung==
+
+  WoTeXX basiert auf einem chaotischen Komponentenmodell. Dabei gibt es keine
+  Hauptkomponente (Main) sondern nur einen linearen Prozess der Initialisierung,
+  bei dem alle Komponenten nebenläufig angestossen werden und sich dann selbst
+  organisieren müssen.\\
+  \\
+  Nachfolgend werden die Grundlagen zur Anpassung und Weiterentwicklung
+  beschrieben.\\
+
+  ===EntwicklungCss|CSS===
+
+    Bei der Formatierung wurde sich für ein Container-Model entschieden. So
+    lassen sich die CSS-Klassen spezialisieren und in der Verwendung
+    kombinieren.\\
+    \\
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    ::mark!&lt;style type="text/css"&gt;::~~~~
+      ~~      ::mark!...::~~~~
+      ~~    ::mark!&lt;/style&gt;::~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    Durch die komponentenbasierte Architektur, werden auch die Styles, getrennt
+    nach den Komponenten, in externen Dateien mit dem Präfix %%css%% und der
+    Dateiendung %%css%% abgelegt und erst mit dem Build-Prozess integriert.\\
+    \\
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    ::mark!&lt;link rel="stylesheet" type="text/css" href="css...css"/&gt;::~~~~
+      ~~    ::mark!&lt;link rel="stylesheet" type="text/css" href="css...css"/&gt;::~~~~
+      ~~    ::mark!&lt;link rel="stylesheet" type="text/css" href="css...css"/&gt;::~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    
+    ====EntwicklungCssModell|Modell====
+
+      [:
+        [+|Body|
+          [|blank!{style="width:100%;"}
+          ||{valign="top"}
+            [+|TreeView (ul)|
+              [+|Topic - Topic1 (li)|
+                [+|Topic - Topic...6 (span)|+]
+              +]
+            +]
+          ||&nbsp;
+          ||{valign="top"}
+            [+|SliderView (div)|+]
+          ||&nbsp;
+          ||{valign="top"}
+           [+|ContentView (div)|
+            [+|Chapter - Chapter1 (div)|
+              [+|Content - Content1 (div)|+]
+              [+|Chapter - Chapter...6 (div)|
+                [+|Content - Content...6 (div)|+]
+              +]
+            +]
+          |]
+          [+|SplashView (div)|+]
+          [+|MessageDialog (div)|+]
+          [+|WaitDialog (div)|+]
+        +]
+      :]
+
+  ===EntwicklungHtml|HTML===
+
+    WoTeXX enthält im Body der HTML-Struktur die Vorlage für den Grundaufbau der
+    einzelnen Komponenten. Diese können  unter Wahrung der
+    Komponentenarchitektur beliebig verändert werden.\\
+    \\
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  ::mark!&lt;body&gt;::~~~~
+      ~~    ::mark!...::~~~~
+      ~~  ::mark!&lt;/body&gt;::~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+
+    ====EntwicklungKomponenten|Komponenten====
+
+      =====EntwicklungKomponentenTreeView|TreeView=====
+
+        TreeView ist ein Container für die Baumstruktur der Navigation, welche
+        per JavaScript generiert wird.\\
+        Die Anpassung ist lediglich über die JavaScript-Klasse
+        [[EntwicklungJavaScriptClassTree|Tree]] möglich.
+
+      =====EntwicklungKomponentenContentView|ContentView=====
+
+        ContentView stellt einen Container für den Kapitelinhalt bereit.\\
+        Die Formatierung und das Markup lassen sich bedingt in der Klasse
+        [[EntwicklungJavaScriptClassWikiSyntax|WikiSyntax]] ändern.
+
+      =====EntwicklungKomponentenSliderView|SliderView=====
+
+        SliderView ist Trennung zwischen Navigation und Kapiteldarstellung.\\
+        Das Markup kann beliebig geändert werden.
+
+      =====EntwicklungKomponentenSplashView|SplashView=====
+
+        SliderView ist Trennung zwischen Navigation und Kapiteldarstellung.\\
+        Das Markup kann beliebig geändert werden.
+
+      =====EntwicklungKomponentenMessageDialog|MessageDialog=====
+
+        Dialog-Komponente zur  Ausgabe von Informationen und Fehlermeldungen.\\
+        Dialoge besitzen eine feste Struktur, die einem Container mit einem
+        Titel- und Content-Element erwartet. Das Markup kann beliebig geändert
+        werden wenn die Elemente entsprechend der Vorgaben der Klasse
+        [[EntwicklungJavaScriptClassDialog|Dialog]] mit IDs versehen werden.
+
+      =====EntwicklungKomponenten|WaitDialog=====
+
+        Dialog-Komponente zur Sperrung der Oberfläche bei der Verarbeitung.\\
+        Dialoge besitzen eine feste Struktur, die einem Container mit einem
+        Titel- und Content-Element erwartet. Das Markup kann beliebig geändert
+        werden wenn die Elemente entsprechend der Vorgaben der Klasse
+        [[EntwicklungJavaScriptClassDialog|Dialog]] mit IDs versehen werden.
+
+  ===EntwicklungJavaScript|JavaScript===
+  
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    ::mark!&lt;script type="text/javascript"&gt;::~~~~
+      ~~      ::mark!...::~~~~
+      ~~    ::mark!&lt;/script&gt;::~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    WoTeXX ist durchgehend objektorientiert. Die Architektur basiert auf einem
+    chaotischen Komponentenmodell. Dabei gibt es keine Hauptkomponente (Main)
+    sondern nur einen linearen Prozess der Initialisierung, bei dem alle
+    Komponenten nebenläufig angestossen werden und sich dann selbst organisieren
+    müssen. Anders als bei ereignisgesteuerten Modellen liegen hier nur passive
+    Komponenten vor, welche sich selbst über den aktuellen Zustand informieren
+    müssen.\\
+    \\
+    Nach diesem Modell liegen zahlreiche Klassen vor, welche bei Bedarf
+    statische und ereignisbasierte Aufrufe zur Initialisierung besitzen.\\
+    \\
+    Das Modell ist experimentell aber tragfähig.\\
+    \\
+    Durch die komponentenbasierte Architektur, werden auch die Skripte, getrennt
+    nach den Komponenten, in externen Dateien mit dem Präfix %%class%% und der
+    Dateiendung %%js%% abgelegt und erst mit dem Build-Prozess integriert.\\
+    \\
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    ::mark!&lt;script src="text/javascript" href="class...js"/&gt;&lt;/script&gt;~~~~::~~~~
+      ~~    ::mark!&lt;script src="text/javascript" href="class...js"/&gt;&lt;/script&gt;~~~~::~~~~
+      ~~    ::mark!&lt;script src="text/javascript" href="class...js"/&gt;&lt;/script&gt;~~~~::~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~      
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+
+    ====EntwicklungJavaScriptObjekte|Objekte====
+
+      =====EntwicklungJavaScriptClassApplication|Application======
+      
+        Klasse mit vorrangig statischen Methoden zur Laufzeitumgebung und
+        zur Fehlerbehandlung.
+
+      =====EntwicklungJavaScriptClassAttachments|Attachments======
+      
+        Attachments stellt eine Label-Value-Map und einen Präprozessor für
+        wiederkehrende Inhalte in der Wiki-Syntax bereit, welche Platzhalter im
+        Format %%$&lt;label&gt;%% direkt in der Wiki-Syntax unterstützten.\\
+        Das Ersetzen erfolgt automatisch mit Laden der Kapitel.\\
+        Attachments werden als Skript-Block vom Typ %%text/data%% angelegt.
+      
+      =====EntwicklungJavaScriptClassChapter|Chapter======
+      
+        Meta-Objekt zum Halten von Kapitel-Daten.
+        
+      =====EntwicklungJavaScriptClassComponent|Component======
+      
+        Abstrakte Klasse zur Abbildung von instanzierten Komponenten.
+      
+      =====EntwicklungJavaScriptClassContentView|ContentView======
+      
+        ContentView stellt den Inhalt eines Kapitels dar.
+      
+      =====EntwicklungJavaScriptClassDialog|Dialog======
+      
+        Abstrakte Klasse zur Darstellung von GUI-Komponenten als Dialog. Dialoge
+        sind ein HTML-Konstrukt was aus Container-, Titel- und Content-Element
+        besteht, welche per IDs gekennzeichnet werden.\\
+        \\
+        Die Klasse stellt das gekennzeichnete Markup als modaler Dialog dar,
+        steuert und kontrolliert die Darstellung vergleichbar einem
+        Window-Manager, unterstützt Formularelemente mit Eingabehilfe und
+        regelbasierter Freigabe.\\
+        \\
+        Die Darstellung mehrerer und überlagernder Dialoge wird unterstützt.
+
+      =====EntwicklungJavaScriptClassDisplay|Display======
+      
+        Klasse mit vorrangig statischen Methoden zur Anzeige.
+
+      =====EntwicklungJavaScriptClassDom|Dom======
+      
+        Klasse mit vorrangig statischen Methoden zur Dom-Manipulation.
+        
+      =====EntwicklungJavaScriptClassEditorView|EditorView======
+      
+        Klasse mit vorrangig statischen Methoden für die Anbindung an den
+        externen Editor.
+
+      =====EntwicklungJavaScriptClassInterpreter|Interpreter======
+      
+        Abstrakte Klasse zur Implementierung von Interpretern zu einem Dialekt.
+      
+      =====EntwicklungJavaScriptClassMarkdown|Markdown======
+      
+        Externe Klasse zur Transformation von Markdown in HTML:
+      
+      =====EntwicklungJavaScriptClassMarkdownSyntax|MarkdownSyntax======
+      
+        Markdown stellt den Interpreter für die Markdown-Syntax bereit.\\
+        Der Interpreter registriert sich selbstständig über das Syntax-Objekt
+        beim Parser, wenn der aktuelle Dialekt zum Interpreter passt.
+      
+      =====EntwicklungJavaScriptClassMessageDialog|MessageDialog======
+      
+        Implementierung eines Dialogs zur Ausgabe von Nachrichten und Meldungen.
+      
+      =====EntwicklungJavaScriptClassMotion|Motion======
+      
+        Abstrakte Klasse zur Implementierung von UI-Elementen, welche sich per
+        Maus verschieben lassen.
+      
+      =====EntwicklungJavaScriptClassParser|Parser======
+      
+         Der Parser verarbeitet und transformiert eine Syntax mittels eines
+         Interpreters, welcher sich selbst organisieren und zur Verarbeitung
+         vom aktuellen Dialekt registrieren muss.\\
+         Der Parser stellt somit eine statische Komponente für verschiedene
+         Syntaxen bereit.
+     
+      =====EntwicklungJavaScriptClassResources|Resources======
+      
+        Resources stellt eine Label-Value-Map und einen Präprozessor für
+        mehrsprachige Ausgabe bereit, welche Platzhalter im Format
+        %%$&lt;label&gt;%% direkt in der HTML-Struktur unterstützen.\\
+        Das Ersetzen erfolgt automatisch mit Laden der Seite.\\
+        Resources werden als Skript-Block vom Typ %%text/resources%% angelegt.
+        Das Attribut %%lang%% definiert die entsprechende Sprache. Ist zur
+        Spracheinstellung des Browsers keine passende Resource vorhanden, wird
+        das erste Resource-Skript als Standard verwendet.
+      
+      =====EntwicklungJavaScriptClassSearchMacroX|SearchMacro======
+      
+        Implementierung der Logik zum Funktionskapitel der Volltextsuche.\\
+        Die Klasse stellt neben dem Interpreter der Suchanfrage auch die
+        Indizierung, Suche, Berechnung der Fundstellen auf Basis der kleinsten
+        Annäherung von Suchbegriffen sowie die Ausgabe bereit.
+      
+      =====EntwicklungJavaScriptClassSliderView|SliderView======
+      
+        Implementierung des Trenners zwischen Navigation und Inhalt.
+        
+      =====EntwicklungJavaScriptClassSyntax|Syntax======
+      
+         Syntax, erkennt den aktuell verwendeten Dialekt und gibt den
+         Interpretern die Möglichkeit sich für die Verarbeitung zu registrieren,
+         damit der Parser diese dann zur Transformation heranziehen kann.
+      
+      =====EntwicklungJavaScriptClassToc|Toc======
+      
+         Toc baut das Inhaltsverzeichnis auf und stellt Methoden für den Zugriff
+         auf dieses bereit.
+      
+      =====EntwicklungJavaScriptClassTree|Tree======
+      
+        Abstrakte Klasse zur Darstellung von Kapitelbäumen als GUI-Komponente
+        mit einem hohen Grad an Nebenläufigkeit zur Verringerung der
+        Verarbeitungszeit.
+
+      =====EntwicklungJavaScriptClassTreeView|TreeView======
+      
+        TreeView stellt das Inhaltsverzeichnis als Baum dar.
+      
+      =====EntwicklungJavaScriptClassWaitDialog|WaitDialog======
+      
+        Implementierung eines Dialogs zur Sperrung der Browseransicht und 
+        Darstellung eines Warte-Symbols bei längerer Verarbeitung.
+        
+      =====EntwicklungJavaScriptClassWikiSyntax|WikiSyntax======
+      
+         Interpreter zur Transformation der Wiki-Syntax.\\
+         Der Interpreter registriert sich selbstständig über das Syntax-Objekt
+         beim Parser, wenn der aktuelle Dialekt zum Interpreter passt.
+        
+    ===EntwicklungMehrsprachigkeit|Mehrsprachigkeit===
+    
+      Die Mehrsprachigkeit wird über ResourceBundles abgebildet. Diese basieren
+      auf Skript-Blöcken vom Typ %%text/resources%% bei denen die Sprache mit
+      dem Attribute %%lang%% gesetzt wird und einem auf Platzhalter basierenden
+      Präprozessor.
+      
+      ====EntwicklungMehrsprachigkeitResources|Resources====
+      
+        [%!~~~~
+          ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+          ~~&lt;html&gt;~~~~
+          ~~  &lt;head&gt;~~~~
+          ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+          ~~    &lt;script type="text/wiki"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    &lt;script type="text/javascript"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    ::mark!&lt;script type="text/resources" lang="de"&gt;::~~~~
+          ~~      ::mark!...::~~~~
+          ~~    ::mark!&lt;/script&gt;::~~~~      
+          ~~    &lt;script type="text/resources" ::mark!lang="en"::&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~      
+          ~~    &lt;style type="text/css"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/style&gt;~~~~
+          ~~  &lt;/head&gt;~~~~
+          ~~  &lt;body&gt;~~~~
+          ~~    ...~~~~
+          ~~  &lt;/body&gt;~~~~
+          ~~&lt;/html&gt;~~~~
+        %]
+        \\
+        Die Auswahl der Sprache erfolgt entsprechend der Spracheinstellung des 
+        Browsers. Kann kein passendes ResourceBundle ermittelt werden, wird das
+        erste als Standard verwendet.
+      
+      ====EntwicklungMehrsprachigkeitSyntax|Syntax====
+      
+        Mit einfach, überschaubar und sparsam lässt sich die Syntax beschreiben.
+        Sie setzt auf das Schlüssel/Wert-Prinzip (Key/Value), unterstützt
+        Zeilenfortführung, rekursive Platzhalter und die Maskierung von
+        Steuerzeichen.\\
+        \\
+        Beispiel der Verwendung:\\
+        \\
+        [%!~~~~
+          ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+          ~~&lt;html&gt;~~~~
+          ~~  &lt;head&gt;~~~~
+          ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+          ~~    &lt;script type="text/wiki"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    &lt;script type="text/javascript"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    &lt;script type="text/resources" lang="de"&gt;~~~~
+          ~~      ::mark!Platzhalter_A = Text für den Platzhalter_A::~~~~
+          ~~      Platzhalter_B = Text für den Platzhalter_B~~~~                    
+          ~~                    ::mark!+:: mit Fortführung in der Folgezeile~~~~             
+          ~~      Platzhalter_C = Text für den Platzhalter_C~~~~                    
+          ~~                    ::mark!+:: mit Fortführung in der Folgezeile~~~~                    
+          ~~                    + und maskierten Steuerzeichen ::mark!\r::, ::mark!\n::, ::mark!\t::~~~~                    
+          ~~      Platzhalter_D = Text für Platzhalter_D ~~~~ 
+          ~~                    ::mark!+:: mit Fortführung in der Folgezeile~~~~                    
+          ~~                    + mit Text von ::mark!${Platzhalter_A}::~~~~ 
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~      
+          ~~    &lt;style type="text/css"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/style&gt;~~~~
+          ~~  &lt;/head&gt;~~~~
+          ~~  &lt;body&gt;~~~~
+          ~~    ...~~~~
+          ~~  &lt;/body&gt;~~~~
+          ~~&lt;/html&gt;~~~~
+        %]
+      
+      ====EntwicklungMehrsprachigkeitPlatzhalter|Platzhalter====
+      
+        Platzhalter können innerhalb der ResourceBundles und der HTML-Syntax
+        verwendet werden. Der Präprozessor kümmert sich mit dem Start der
+        Anwendung um das Auflösen.\\
+        \\
+        Beispiel der Verwendung:\\
+        \\
+        [%!~~~~
+          ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+          ~~&lt;html&gt;~~~~
+          ~~  &lt;head&gt;~~~~
+          ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+          ~~    &lt;script type="text/wiki"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    &lt;script type="text/javascript"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~
+          ~~    &lt;script type="text/resources" lang="de"&gt;~~~~
+          ~~      ::mark!Platzhalter_A = Text für den Platzhalter_A::~~~~
+          ~~      Platzhalter_B = Text für Platzhalter_B ~~~~ 
+          ~~                    + mit Fortführung in der Folgezeile~~~~                    
+          ~~                    + mit Text von ::mark!${Platzhalter_A}::~~~~ 
+          ~~      ...~~~~
+          ~~    &lt;/script&gt;~~~~      
+          ~~    &lt;style type="text/css"&gt;~~~~
+          ~~      ...~~~~
+          ~~    &lt;/style&gt;~~~~
+          ~~  &lt;/head&gt;~~~~
+          ~~  &lt;body&gt;~~~~
+          ~~    ...~~~~
+          ~~    ::mark!${Platzhalter_A}::~~~~
+          ~~    ...~~~~          
+          ~~  &lt;/body&gt;~~~~
+          ~~&lt;/html&gt;~~~~
+        %]        
+          
+    ===EntwicklungBuild|Build===          
+  
+      Zur besseren Entwicklung, liegt WoTeXX in einzelnen Komponenten vor. Für
+      die Auslieferung werden CSS, JavaScript und HTML optimiert und in einer
+      Datei zusammengeführt. Dieser Prozess ist recht komplex und erfolgt mit
+      Apache Ant, was lokal vorliegen und im Path der Konsole eingetragen sein
+      muss.\\
+      \\
+      Das Build-Skript enthält lediglich ein ausführbares Target, welches alle
+      Komponenten optimiert, zusammenfasst und finale Zip-Dateien erstellt.\\
+      \\
+      Zum Aufruf muss in das Unterverzeichnis %%./developing%% gewechselt werden
+      und Ant wie folgt aufgerufen werden:\\
+      \\
+      [%ant archive%] 
+  
+==Historie|Historie==
+
+  ~~**1.2014.0228**
+  * Überarbeitung vom UI
+  * Erweiterung und die Konfiguration vom Display per Meta-Tag im Header
+  * Erweiterung um das Einbetten von Anlagen (Media-Inhalte, Wiki-Fragmente)
+  * Erweiterung vom Wiki-Dialekt um %%[~~@...@~~]%% zum Einbetten von Code ~~~
+    ohne Interpretation als Wiki-Syntax
+  * Erweiterung um Markdown als Dialekt
+  * Überarbeitung der Suche, Verbesserung der Treffer Anzeige
+  * Auslagerung vom Editor
+  * Trennung der Komponenten
+  * Überarbeitung vom Objekt-Model
+  * Umstellung auf einen abstrakten Parser mit Dialekt- und Interpreter-API ~~~
+    zur einfachen Einbindung neuer Syntaxen
+  * Überarbeitung vom ResourceBundle
+  * Überarbeitung der APIs
+  * Erweiterung der API um Dialoge inkl. Motion
+  * Erweiterung der Macro-API um die Übergabe vom Kapitel mit den Methoden ~~~
+    %%call%% und %%prepare%%
+  * Verbesserung der Toleranz in der Kapitelübersicht, Lücken werden ~~~
+    automatisch geschlossen
+  * Optimierung vom Build-Prozess
+
+  ~~**1.2012.0514**
+  * Allgemein: Korrektur/Workaround für IE9, wenn die leere Datei geöffnet wird
+
+  ~~**1.2011.0226**
+
+  * Allgemein: Überarbeitung/Optimierung des Parsers
+  * Allgemein: Optimierung in Grösse und Performanz
+  * Allgemein: Vermehrte Umstellung auf Singleton mit statischen Methoden
+  * Allgemein: Trennung von Parser und Toc
+  * Allgemein: Überarbeitung und Kapselung der Dateizugriffe
+  * Syntax: Erweiterung der Toleranz bei der Angabe vom Attribut ~~~
+    %%type%% des Wiki-Skripts
+  * Syntax: Tabellen lassen sich nun verschachteln
+  * Syntax: Formatierung funktioniert nun auch über mehrere Zeilen
+  * Syntax: Kommentare funktionieren nun über mehrere Zeilen und sind ~~~
+    nicht mehr kapitelgebunden
+  * Syntax: (Unter)Kapitel lassen sich nun mit der Option %%@%% als ~~~
+    Anker in Konstrukten (Tabellen, Blöcke, ...) einbringen
+  * Funktionskapitel: Inhalt bleibt beim Kapitelwechsel nun erhalten
+  * Funktionskapitel: Erweiterung um den Aufruf der %%Blind%%-Methode ~~~
+    beim Wechsel des Kapitels
+  * Drucken: Rückbau der Ausgabe aller Kapitel wegen des ~~~
+    unverhältnismässigen hohen Bedarfs an Ressourcen
+  * Bearbeitung: Trennung der Bedienung zum Öffnen der Kapitel IE/Alt ~~~
+    und FF/Strg
+  * Bearbeitung: Überarbeitung der Speicherung in Punkto Performanz ~~~
+    und Ressourcen
+
+  ~~**1.2010.1230**
+
+  * Erweiterung um Funktionskapitel zur Anbindung von Makros und ~~~
+    WoTeXX-Funktionen an Kapitel
+  * Erweiterung um die Funktion Suchen
+  * Erweiterung um das Vorladen aller Kapitel im Hintergrund
+  * Erweiterung um die Druckausgabe aller Kapitel
+  * Erweiterung um das Meta-Tag %%content-mode%% zur Angabe der ~~~
+    Zugriffsberechtigung (Lesen/Schreiben) auf das Wiki-Skript
+  * Anpassung leichter Art bei den Symbolen des Editors
+  * Korrektur beim Öffnen/Bearbeiten leerer Kapitel (nur Titel)
+  * Korrektur beim Öffnen der Kapitelauswahl im Editor wenn noch ~~~
+    keine Kapitel vorliegen
+  * Korrektur/Optimierung der Standardeinrückung im Editor beim ~~~
+    Einfügen von mehrzeiligen Strukturen
+
+  ~~**1.2010.1111**
+
+  * Erweiterung um die Bearbeitung mit Microsoft Internet Explorer und ~~~
+    Mozilla Firefox, wenn die Datei über das Dateisystem geöffnet wird
+  * Erweiterung um Mehrsprachigkeit (DE, EN, FR)
+  * Korrektur der hohen CPU-Last beim Abbruch des Kopiervorgangs von ~~~
+    Dateien in den Storage
+  * Korrektur der (Fehler)Meldung, das Ausbrechen mit der Tab-Taste ~~~
+    wurde unterbunden
+  * Korrektur der Position des Druckrandes im Editor beim horizontalen ~~~
+    Bildlauf (Scrollen)
+
+  ~~**1.2010.0601**
+
+  * komplette Überarbeitung mit dem Schwerpunkt Module und Komponenten
+  * Vereinheitlichung der HTA- und HTML-Version
+  * Erweiterung um die Blockfunktion Einrückung
+  * Erweiterung der Navigation um Symbole
+  * Erweiterung der HTA-Version um eine direkte Bearbeitung des Inhalts
+  * Erweiterung der HTA-Version um einen HTML-Export
+  * Erweiterung der HTA-Version um einen Datei-Upload
+
+  ~~**1.2010.0107**
+
+  * Erweiterung um alternative Kapitelnamen
+  * Optimierung des CSS allgemein
+  * Optimierung des CSS für die Druckausgabe
+  * Korrektur für den Fall, wenn beim Verschieben des Anzeigebereichs ~~~
+    ungültige Werte erreicht werden
+  * Korrektur der fehlenden Zeichensatzangabe (charset)
+  * Korrektur bei Lücken/Sprüngen in der Kapiteltiefe 1,3,5,..
+
+  ~~**1.2010.0102**
+  * WoTeXX steht als Release bereit
+
+==OffenePunkte|Offene Punkte==
+
+  Einige Punkte blieben in der aktuellen Version noch offen bzw. ungelöst.
+  Lösungen oder auch Ansätze, auch unabhängig von dieser Liste, können gern an
+  [[mail:service@seanox.de]] gesandt werden.\\
+
+  * Umsetzung/Anbindung vom externen Editor
+  * Suche mit Hervorhebung der Fundstellen
+  * Drucken mit Inhaltsverzeichnis
+  * automatisches Erstellen von internen Verweisen (Links) für ~~~
+    Textpassagen auf Basis einer Mapping-Tabelle
+  * automatisches Erstellen vom Schlagwortverzeichnis (Funktionskapitel)
+  * Einbetten von JavaScript
+  * optionales Auslagern der Wiki-Skripte in externe Dateien
+  * Templates/Strukturen zum Befüllen; nur noch Angabe von Daten und ~~~
+    Template
+  * Teamfähige Version (Speicherung auf Server/kapitelweise Verwaltung)
+  * Funktion für Vor und Zurück (Stack mit der Historie)
+  * Verschieben von Kapitel inkl. Unterkapitel(n)
+  * Bearbeiten: Kapitel (nächtes/vorangehendes)
+  * Druckeausgabe (alle Kapitel)
+  * Opera, fehlende Anpassung vom Anzeigebereich bei Veränderung ~~~
+    (Vergrösserung) des Fensters (Brower-Bug)
+  * --Firefox 4 B 11, neue Browser-Funktion lässt die manuelle ~~~
+    Grössenanpassung von Eingabefeldern zu, was zu Fehlern in der ~~~
+    Darstellung des Editors führen kann--
+  * --Erweiterungen (API/AddOn)--
+  * --Verschachteln von Tabellen--
+  * --Formatierung über mehrere Zeilen--
+  * --ungewolltes Markieren in Opera und Konqueror beim Verschieben-- ~~~
+    --vom Anzeigebereich mit der Maus--
+  * --Suche über den kompletten Inhalt--
+  * --Funktionen der HTA-Version auch für andere Plattformen/Browser--
+  * --Kapitel mit alternativen Synonym--
+  * --Bearbeiten und Speichern der einzelnen Kapitel in der HTA-Version--
+  * --Aufruf der HTA-Version mit Kapitelangabe per Kommandozeilen-Parameter--
+
+==screen!SearchMacro|Suchen==
+
+  <div id="SearchMacro">
+
+    <input name="SearchMacroQueryString" style="width:50%;" value="">&nbsp;
+    <input type="submit" name="SearchMacroExecuteButton"
+      onclick="SearchMacro.execute()" value="Suchen">\\
+    \\
+    Die Suche erfolgt über den gesamten Inhalt. Zur Formulierung werden die
+    logischen Operatoren %%+%% (und), %%|%% (oder) sowie %%-%% (nicht), die
+    Verschachtelung einzelner Bedingungen durch runde Klammern sowie die
+    Verwendung vom Joker %%*%% unterstützt.
+    <div id="SearchMacroEmpty">
+      ~~**Es wurden keine Ergebnisse gefunden.**\\
+      \\
+      Empfohlen werden die folgenden Möglichkeiten:\\
+      *Überprüfen Sie die Schreibweise der eingegebenen Wörter
+      *Versuchen Sie es mit anderen Begriffen erneut
+      *Stellen Sie die Formulierungen um
+     
+      ~~**Hinweise zur effizienten Suche**
+    <~~/div>
+    <div id="SearchMacroHelp">
+      [|simple xl!
+      ||Und-Verknüpfung
+      ||Die Suchbegriffe werden in loser Reihenfolge und getrennt durch Leerzeichen oder einem Plus eingegeben.
+      ||Montag Dienstag Mittwoch
+      |-
+      ||Oder-Verknüpfung
+      ||Die Suchbegriffe werden in loser Reihenfolge und getrennt durch einen Trennstrich eingegeben.
+      ||Montag | Dienstag | Mittwoch
+      |-
+      ||Nicht-Bedingung
+      ||Zum Ausschluss von Begriffen und zur Negation von Bedingungen wird das Minus verwendet.
+      ||-Montag
+      |-
+      ||Jokerzeichen
+      ||Als Platzhalter mit unbestimmter Länge wird das Jokerzeichen verwendet
+      ||M*tag
+      |-
+      ||Verschachtelung mit Klammern
+      ||Bedingungen in der Suchabfrage lassen sich mit runden Klammern beliebig verschachteln.
+      ||(Bedingung A | Bedingung B) + Bedingung C
+      |]
+    <~~/div>
+    <div id="SearchMacroResult">
+      <span id="SearchMacroResultCount">0<~~/span> Ergebnisse
+      (<span id="SearchMacroResultTime">0<~~/span> Sekunden)\\
+      ---
+      <div id="SearchMacroResultContent"><~~/div>
+    <~~/div>
+  <~~/div>
+
+    </script>
+    <script type="text/data">
+      WollAndTed = data:image/x-icon;base64,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
+    </script>    
+    <script type="text/resources" lang="de">
+    
+      TextCancel = Abbrechen
+      TextIgnore = Ignorieren
+      TextRetry  = Wiederholen
+      TextYes    = Ja
+      TextNo     = Nein
+      TextOk     = Ok
+    
+      MessageDialogOkLabel     = ${TextOk}
+      MessageDialogYesLabel    = ${TextYes}
+      MessageDialogNoLabel     = ${TextNo}
+      MessageDialogRetryLabel  = ${TextRetry}
+      MessageDialogIgnoreLabel = ${TextIgnore}
+      MessageDialogCancelLabel = ${TextCancel}
+      
+      ApplicationOnErrorMessage = Ein unerwartet schwerwiegender Fehler ist aufgetreten.\n\n
+                                + \t${0}\n\nDie Anwendung wurde angehalten und erfordert einen Neustart.
+    </script>
+    <script type="text/resources" lang="en">    
+    
+      TextCancel = Cancel
+      TextIgnore = Ignore
+      TextRetry  = Repeat
+      TextYes    = Yes
+      TextNo     = No
+      TextOk     = Ok
+    
+      MessageDialogOkLabel     = ${TextOk}
+      MessageDialogYesLabel    = ${TextYes}
+      MessageDialogNoLabel     = ${TextNo}
+      MessageDialogRetryLabel  = ${TextRetry}
+      MessageDialogIgnoreLabel = ${TextIgnore}
+      MessageDialogCancelLabel = ${TextCancel}
+      
+      ApplicationOnErrorMessage = An unexpected fatal error has occurred.\n\n
+                                + \t${0}\n\nThe application has stopped and requires a restart.
+    </script>
+    <script type="text/resources" lang="fr">
+
+      TextCancel = Annuler
+      TextIgnore = Ignorer
+      TextRetry  = Répéter
+      TextYes    = Oui
+      TextNo     = Non
+      TextOk     = Ok
+    
+      MessageDialogOkLabel     = ${TextOk}
+      MessageDialogYesLabel    = ${TextYes}
+      MessageDialogNoLabel     = ${TextNo}
+      MessageDialogRetryLabel  = ${TextRetry}
+      MessageDialogIgnoreLabel = ${TextIgnore}
+      MessageDialogCancelLabel = ${TextCancel}
+
+      ApplicationOnErrorMessage  = Une erreur fatale est survenue.\n\n
+                                 + \t${0}\n\nL'application a été arrêtée et nécessite un redémarrage. 
+    </script>
+    <script type="text/javascript" src="classResources.js"></script>    
+    <script type="text/javascript" src="classApplication.js"></script>
+    <script type="text/javascript" src="classDisplay.js"></script>
+    <script type="text/javascript" src="classDom.js"></script>    
+    <script type="text/javascript" src="classMotion.js"></script>
+    <script type="text/javascript" src="classComponent.js"></script>    
+    <script type="text/javascript" src="classDialog.js"></script>        
+    
+    <script type="text/javascript" src="classChapter.js"></script>
+    <script type="text/javascript" src="classAttachments.js"></script>
+    <script type="text/javascript" src="classSyntax.js"></script>
+    <script type="text/javascript" src="classInterpreter.js"></script>
+    <script type="text/javascript" src="classWikiSyntax.js"></script>
+    <script type="text/javascript" src="classMarkdown.js"></script>    
+    <script type="text/javascript" src="classMarkdownSyntax.js"></script>
+    <script type="text/javascript" src="classParser.js"></script>
+    <script type="text/javascript" src="classToc.js"></script>
+    <script type="text/javascript" src="classTree.js"></script>
+    <script type="text/javascript" src="classTreeView.js"></script>
+    <script type="text/javascript" src="classEditorView.js"></script>    
+    <script type="text/javascript" src="classContentView.js"></script>
+    <script type="text/javascript" src="classSliderView.js"></script>
+    <script type="text/javascript" src="classMessageDialog.js"></script>    
+    <script type="text/javascript" src="classWaitDialog.js"></script>        
+    <script type="text/javascript" src="classSearchMacro.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="cssBody.css"/>
+    <link rel="stylesheet" type="text/css" href="cssSliderView.css"/>
+    <link rel="stylesheet" type="text/css" href="cssTreeView.css"/>
+    <link rel="stylesheet" type="text/css" href="cssSplash.css"/>
+    <link rel="stylesheet" type="text/css" href="cssSplashView.css"/>
+    <link rel="stylesheet" type="text/css" href="cssContentView.css"/>
+    <link rel="stylesheet" type="text/css" href="cssDialog.css"/>
+    <link rel="stylesheet" type="text/css" href="cssMessageDialog.css"/>
+    <link rel="stylesheet" type="text/css" href="cssWaitDialog.css"/>
+    <link rel="stylesheet" type="text/css" href="cssSearchMacro.css"/>
+
+    <link rel="stylesheet" type="text/css" media="print" href="cssPrint.css"/>
+  </head>
+  <body>
+    <div id="TreeView"></div>
+    <div id="ContentView"></div>
+    <div id="SliderView">
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>  
+    <div id="SplashView">
+      <div>
+        <div>
+          <span>SEANOX</span><span>WOTEXX</span>
+          <span>
+            Seanox WoTeXX @@@ant-project-version<br>
+            Copyright (C) @@@ant-project-year Seanox Software Solutions<br>
+            Alle Rechte vorbehalten
+          </span>  
+        </div>
+      </div>
+    </div>    
+    <div id="MessageDialog" class="dialog">
+      <div id="MessageDialogTitle"></div>
+      <div>
+        <div>
+          <div id="MessageDialogSymbol"></div>
+          <div id="MessageDialogContent"></div>
+        </div>
+        <div>
+          <button id="MessageDialogNone"></button>
+          <button id="MessageDialogOk">$MessageDialogOkLabel</button>
+          <button id="MessageDialogYes">$MessageDialogYesLabel</button>
+          <button id="MessageDialogNo">$MessageDialogNoLabel</button>
+          <button id="MessageDialogRetry">$MessageDialogRetryLabel</button>
+          <button id="MessageDialogIgnore">$MessageDialogIgnoreLabel</button>
+          <button id="MessageDialogCancel">$MessageDialogCancelLabel</button>
+        </div>
+      </div>
+    </div>
+    <div id="WaitDialog">
+      <div id="WaitDialogTitle"></div>
+      <div>
+        <div></div>
+        <div></div>        
+      </div>
+    </div>
+  </body>
+</html>

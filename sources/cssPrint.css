@@ -1,0 +1,9 @@
+body {overflow:auto; background:#FFFFFF;}
+
+#ContentView {background:#FFFFFF; color:#000000; position:relative; width:100%; height:100%; top:0%; left:0%; overflow:auto;}
+
+#ContentView *.break {page-break-after:always;}
+
+#TreeView    {display:none;}
+#SliderView  {display:none;}
+#SearchMacro {display:none;}

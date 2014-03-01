@@ -1,0 +1,350 @@
+<?xml version="1.0" ?>
+<project name="wotexx" default="usage" basedir=".">
+  <target name="usage">
+    <echo>                                                    </echo>
+    <echo> the following targets are available ...            </echo>
+    <echo>                                                    </echo>
+    <echo>   archive  build and make archives for distribution</echo>
+  </target>
+
+  <property name="project" value="wotexx"/>
+  <property name="version" value="1.2014.0228"/>
+
+  <property name="workspace" value=".."/>
+  <property name="sources" value="sources"/>
+  <property name="documentation" value="documentation"/>
+  <property name="build" value="./build"/>
+  
+  <fileset id="build.sources.js" dir="${build}/${sources}" includes="**/*.js"/>
+  <fileset id="build.sources.html" dir="${build}/${sources}" includes="**/*.hta,**/*.html"/>
+  <fileset id="build.sources.empty" dir="${build}/${sources}" includes="**/*.empty"/>
+  <fileset id="build.sources.css" dir="${build}/${sources}" includes="**/*.css"/>
+  <fileset id="build.sources.txt" dir="${build}/${sources}" includes="**/*.txt,**/*.license" excludes="**/${project}.txt"/>
+  <fileset id="build.sources.wiki" dir="${build}/${sources}" includes="**/${project}.txt"/>
+  
+  <target name="prepared">
+    <echo file="build.swap" append="false">${version}</echo>
+    <replaceregexp file="build.swap" match="(\d)\.(\d{4})\.(\d{2})(\d{2})" replace="content=release=\1\\\\u000Dyear=\2\\\\u000Dmonth=\3\\\\u000Dday=\4"/>
+    <property file="build.swap"/>
+    <echo file="build.swap" append="false">${content}</echo>
+    <property file="build.swap"/>
+    <property name="timing" value="${year}${month}${day}"/>
+    <delete file="build.swap"/>
+    <echo file="build.swap" append="false">
+      character.00=\u0000
+      character.07=\u0007
+      character.09=\t
+      character.0A=\n
+      character.0D=\r
+      character.22=\u0022
+      character.3C=\u003C
+      character.3E=\u003E
+      character.SP=\u0020\u0020
+      character.CR=\r\n
+    </echo>
+    <property file="build.swap"/>
+    <delete file="build.swap"/>
+  </target>
+  
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement location="./ant-contrib-1.0b3.jar"/>
+    </classpath>
+  </taskdef>
+  
+  <macrodef name="includejs">
+    <attribute name="file"/>
+    <sequential>
+      <loadfile property="data@{file}" srcFile="${build}/${sources}/${file}" encoding="ISO-8859-1"/>
+      <replace token="&lt;script type=&quot;text/javascript&quot; src=&quot;${file}&quot;&gt;&lt;/script&gt;" value="&lt;!--meta:js ${character.SP}${data@{file}} meta:js--&gt;">
+        <fileset refid="build.sources.html"/>
+      </replace>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="includecss">
+    <attribute name="file"/>
+    <sequential>
+      <loadfile property="data@{file}" srcFile="${build}/${sources}/${file}" encoding="ISO-8859-1"/>
+      <replace token="&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;print&quot; href=&quot;${file}&quot;/&gt;" value="&lt;!--meta:print ${character.SP}${data@{file}} meta:print--&gt;">
+        <fileset refid="build.sources.html"/>
+      </replace>
+      <loadfile property="data@{file}" srcFile="${build}/${sources}/${file}" encoding="ISO-8859-1"/>
+      <replace token="&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;${file}&quot;/&gt;" value="&lt;!--meta:css ${character.SP}${data@{file}} meta:css--&gt;">
+        <fileset refid="build.sources.html"/>
+      </replace>
+    </sequential>
+  </macrodef>
+  
+  <target name="preload">
+    <delete dir="${build}"/>
+    <mkdir dir="${build}"/>
+    <copy todir="${build}/${sources}">
+      <fileset dir="${workspace}/${sources}" excludes="**/*.html"/>
+    </copy>
+
+    <echo>Resolve common variables</echo>
+    <replace token="@@@ant-project-year" value="${year}">
+      <fileset refid="build.sources.html"/>
+      <fileset refid="build.sources.js"/>
+      <fileset refid="build.sources.css"/>
+      <fileset refid="build.sources.txt"/>
+      <fileset refid="build.sources.wiki"/>
+    </replace>
+    <replace token="@@@ant-project-version" value="${version}">
+      <fileset refid="build.sources.html"/>
+      <fileset refid="build.sources.js"/>
+      <fileset refid="build.sources.css"/>
+      <fileset refid="build.sources.txt"/>
+      <fileset refid="build.sources.wiki"/>
+    </replace>
+    
+    <echo>Compress txt</echo>
+    <replaceregexp match="^\s*(\S+)" replace="${character.SP}\1" flags="g" byline="true">
+      <fileset refid="build.sources.txt"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.txt"/>
+    </replaceregexp>
+
+    <echo>Compress wiki</echo>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.wiki"/>
+    </replaceregexp>
+
+    <echo>Compress js</echo>
+    <replaceregexp match="^\s+" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="^//.*" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="/\*.*" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="^\*.*" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="^\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="\{\s*((\r\n)|(\n\r)|\r|\n)+\s*\}" replace="{}" flags="gm" byline="false">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    
+    <replaceregexp match="((\r\n)|(\n\r)|\r|\n)+" replace=" " flags="gm" byline="false">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    
+    <replaceregexp match="\s{2,}([\+\-\=\.\;\?\!\*\/\(\)\[\]])" replace=" \1" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="([\+\-\=\.\;\?\!\*\/\(\)\[\]])\s{2,}" replace="\1 " flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="^\s*" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.js"/>
+    </replaceregexp>
+        
+    <echo>Compress css</echo>
+    <replaceregexp match="^\s+" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.css"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.css"/>
+    </replaceregexp>
+    <replaceregexp match="^\s*(.*?)\s*(\{)" replace="\1 \2" flags="g" byline="true">
+      <fileset refid="build.sources.css"/>
+    </replaceregexp>
+    <replaceregexp match="((\r\n)|(\n\r)|[\r\n])+" replace=" " flags="gm" byline="false">
+      <fileset refid="build.sources.css"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.css"/>
+    </replaceregexp>
+
+    <echo>Compress html</echo>
+    <replaceregexp match="${character.00}" replace=" " flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="((\r\n)|(\n\r)|[\r\n])+" replace="${character.00}" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="${character.3C}!--.*?--${character.3E}" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.3C}script type=${character.22}*text/wiki${character.22}*${character.3E}).*?(${character.3C}/script${character.3E})" replace="\1\2" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.3C}script type=${character.22}*text/markdown${character.22}*${character.3E}).*?(${character.3C}/script${character.3E})" replace="\1\2" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="${character.00}+" replace="${character.00}" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="\s*${character.00}\s{5,}\+(\s{1})*" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.00})\s+(\w+)\s*(=)\s*([\w|\$])" replace=" \1      \2 \3 \4" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>    
+    <replaceregexp match="(${character.3E})\s*${character.00}\s{5,}(${character.3C})" replace="\1\2" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="\s*${character.00}\s{8,}" replace="" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>    
+    <replaceregexp match="(${character.3E})\s*${character.00}\s{4,}(${character.3C}/)" replace="\1\2" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="\s*${character.00}\s{5,}(${character.3C}/)" replace="\1" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="${character.00}" replace="${character.0D}${character.0A}" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+
+    <echo>Include js</echo>
+    <for param="file">
+      <path>
+        <fileset refid="build.sources.js"/>
+      </path>
+      <sequential>
+        <property name="file" value=""/>   
+        <propertyregex override="yes" property="file" input="@{file}" regexp="\\" replace="/"/>
+        <propertyregex override="yes" property="file" input="${file}" regexp="^.*/" replace=""/>
+        <echo>... ${file}</echo>
+        <includejs file="${file}"/>
+      </sequential>
+    </for>
+    <replaceregexp match="meta:js--${character.3E}\s+${character.3C}!--meta:js" replace="${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.3C}!--meta:js)" replace="${character.3C}script type=${character.22}text/javascript${character.22}${character.3E}${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="meta:js--${character.3E}" replace="${character.CR}    ${character.3C}/script${character.3E}" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+
+    <echo>Include css</echo>
+    <for param="file">
+      <path>
+        <fileset refid="build.sources.css"/>
+      </path>
+      <sequential>
+        <property name="file" value=""/>
+        <property name="data" value=""/>
+        <propertyregex override="yes" property="file" input="@{file}" regexp="\\" replace="/"/>
+        <propertyregex override="yes" property="file" input="${file}" regexp="^.*/" replace=""/>
+        <echo>... ${file}</echo>
+        <includecss file="${file}"/>
+      </sequential>
+    </for>
+    <replaceregexp match="meta:css--${character.3E}\s+${character.3C}!--meta:css" replace="${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.3C}!--meta:css)" replace="${character.3C}style type=${character.22}text/css${character.22}${character.3E}${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="meta:css--${character.3E}" replace="${character.CR}    ${character.3C}/style${character.3E}" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    
+    <replaceregexp match="meta:print--${character.3E}\s+${character.3C}!--meta:print" replace="${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="(${character.3C}!--meta:print)" replace="${character.3C}style type=${character.22}text/css${character.22} media=${character.22}print${character.22}${character.3E}${character.CR}   " flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    <replaceregexp match="meta:print--${character.3E}" replace="${character.CR}    ${character.3C}/style${character.3E}" flags="gm" byline="false">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>
+    
+    <replaceregexp match="\s+$" replace="" flags="g" byline="true">
+      <fileset refid="build.sources.html"/>
+    </replaceregexp>    
+
+    <echo>Include license</echo>
+    <loadfile property="license" srcFile="${build}/${sources}/${project}.license" encoding="ISO-8859-1"/>
+    <replace token="&lt;!DOCTYPE HTML&gt;" value="${character.3C}!DOCTYPE HTML${character.3E}${character.0D}${character.0A}${character.3C}!--${character.0D}${character.0A}${license}${character.0D}${character.0A}--${character.3E}">
+      <fileset refid="build.sources.html"/>
+    </replace>
+    
+    <echo>Include content</echo>
+    <copy tofile="${build}/${sources}/${project}.empty" file="${build}/${sources}/${project}.hta"/>
+    <loadfile property="text" srcFile="${build}/${sources}/${project}.txt" encoding="ISO-8859-1"/>
+    <propertyregex override="yes" property="text" input="${text}" regexp="((?:\r\n)|(?:\n\r)|[\r\n])" replace="\1      "/>    
+    <replace token="&lt;script type=&quot;text/wiki&quot;&gt;&lt;/script&gt;" value="&lt;script type=&quot;text/wiki&quot;&gt;${character.0D}${character.0A}${character.0D}${character.0A}      ${text}${character.0D}${character.0A}${character.SP}${character.SP}&lt;/script&gt;">
+      <fileset refid="build.sources.html"/>
+    </replace>
+    <replace token="&lt;script type=&quot;text/wiki&quot;&gt;&lt;/script&gt;" value="&lt;script type=&quot;text/wiki&quot;&gt;&lt;/script&gt;">
+      <fileset refid="build.sources.empty"/>
+    </replace>    
+
+    <echo>Make HTML version</echo>
+    <copy tofile="${build}/${sources}/${project}.html" file="${build}/${sources}/${project}.hta"/>
+    <replaceregexp match="(${character.3C})(hta)" replace="\1meta \2" flags="gm" byline="false" file="${build}/${sources}/${project}.html"/>
+    <replaceregexp match="(${character.3C})(hta)" replace="\1meta \2" flags="gm" byline="false" file="${build}/${sources}/${project}.empty"/>
+    <copy tofile="${build}/${sources}/${project}_empty.hta" file="${build}/${sources}/${project}.empty"/>
+    <copy tofile="${build}/${sources}/${project}_empty.html" file="${build}/${sources}/${project}.empty"/>
+  </target>
+
+  <target name="initialize" depends="prepared">
+    <delete file="./${project}-*.zip"/>
+    <delete dir="${build}"/>
+    <delete dir="." includes="${project}-*.zip"/>
+  </target>
+
+  <target name="archive" depends="initialize">
+    <antcall target="preload"/>    
+    <echo>Make HTML version</echo>
+    <mkdir dir="${build}/html/${project}"/>    
+    <copy tofile="${build}/html/${project}/license.txt" file="${workspace}/.license"/>
+    <copy tofile="${build}/html/${project}/${project}.html" file="${build}/${sources}/${project}.html"/>
+    <echo>Make HTA version</echo>   
+    <mkdir dir="${build}/hta/${project}"/>
+    <copy tofile="${build}/hta/${project}/license.txt" file="${workspace}/.license"/>
+    <copy tofile="${build}/hta/${project}/${project}.hta" file="${build}/${sources}/${project}.hta"/>
+    <echo>Make HTML empty version</echo>    
+    <mkdir dir="${build}/html_empty/${project}"/>    
+    <copy tofile="${build}/html_empty/${project}/license.txt" file="${workspace}/.license"/>
+    <copy tofile="${build}/html_empty/${project}/${project}.html" file="${build}/${sources}/${project}_empty.html"/>
+    <echo>Make HTA empty version</echo>
+    <mkdir dir="${build}/hta_empty/${project}"/>        
+    <copy tofile="${build}/hta_empty/${project}/license.txt" file="${workspace}/.license"/>    
+    <copy tofile="${build}/hta_empty/${project}/${project}.hta" file="${build}/${sources}/${project}_empty.hta"/>
+    <echo>Make Source version</echo>
+    <mkdir dir="${build}/src/${project}"/>        
+    <copy tofile="${build}/src/${project}/.license" file="${workspace}/.license"/>
+    <copy todir="${build}/src/${project}/${sources}">
+      <fileset dir="${workspace}/${sources}" excludes="**/*.html"/>
+    </copy>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="${character.00}" replace=" " flags="g" byline="true"/>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="\s+$" replace="" flags="g" byline="true"/>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="((\r\n)|(\n\r)|[\r\n])" replace="${character.00}" flags="gm" byline="false"/>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="(${character.3C}script type=${character.22}*text/wiki${character.22}*${character.3E}).*?(${character.3C}/script${character.3E})" replace="\1\2" flags="g" byline="true"/>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="${character.00}" replace="${character.0D}${character.0A}" flags="g" byline="true"/>
+    <replaceregexp file="${build}/src/${project}/${sources}/${project}.hta" match="\s+$" replace="" flags="g" byline="true"/>
+    <mkdir dir="${build}/src/${project}/developing"/>        
+    <copy todir="${build}/src/${project}/developing" file="${workspace}/developing/ant-contrib-1.0b3.jar"/>
+    <copy todir="${build}/src/${project}/developing" file="${workspace}/developing/build.xml"/>
+    <touch datetime="${timing}" pattern="yyyyMMdd">
+      <fileset dir="${build}"/>
+    </touch>
+    <zip destfile="./${project}-${version}-html.zip" compress="true" filesonly="true" basedir="${build}/html/${project}"/>
+    <zip destfile="./${project}-${version}-hta.zip" compress="true" filesonly="true" basedir="${build}/hta/${project}"/>
+    <zip destfile="./${project}-${version}-html-empty.zip" compress="true" filesonly="true" basedir="${build}/html_empty/${project}"/>
+    <zip destfile="./${project}-${version}-hta-empty.zip" compress="true" filesonly="true" basedir="${build}/hta_empty/${project}"/>
+    <zip destfile="./${project}-${version}-src.zip" compress="true" filesonly="true" basedir="${build}/src/${project}"/>
+  </target>
+</project>

@@ -1,0 +1,17 @@
+#SearchMacro {}
+
+#SearchMacro > div  {margin-top:1em;}
+#SearchMacro h5     {padding:0px!important; margin:0px!important; line-height:14px; font-weight:bold;}
+#SearchMacro h5 a   {color:#000000; text-decoration:none; font-size:12px;}
+#SearchMacro p + h5 {padding-top:1em!important;}
+#SearchMacro h6     {padding:0px!important; margin:0px!important; line-height:12px; font-weight:normal;}
+#SearchMacro h6 a   {color:#404040; text-decoration:none; font-size:12px; }
+#SearchMacro p      {padding-top:0px; margin:0px;}
+
+#SearchMacroHelp                      {} 
+#SearchMacroHelp table td:first-child {font-weight:bold;}
+#SearchMacroHelp table td + td + td   {color:#404040;}
+
+#SearchMacroResult {display:none;}
+
+#SearchMacroEmpty {display:none;}

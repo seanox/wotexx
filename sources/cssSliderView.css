@@ -1,0 +1,5 @@
+#SliderView                   {visibility:hidden;}
+#SliderView                   {background:none; position:absolute; width:6px; height:100%; top:0%; left:20%; overflow:hidden; cursor:w-resize; margin-left:-3px;}
+#SliderView > div             {display:table; width:100%; height:100%;}
+#SliderView > div > div       {display:table-cell; border-right:1px solid #979790;}
+#SliderView > div > div + div {border:none; border-left:1px solid #FFFFF7;}

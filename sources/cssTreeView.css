@@ -1,0 +1,13 @@
+#TreeView                 {background:#B7B7B0; position:absolute; width:20%; height:100%; top:0%; left:0%; overflow:auto; font:13px sans-serif; visibility:hidden;}
+#TreeView *               {list-style-type:none; white-space:nowrap;
+                           -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+#TreeView li > span       {display:inline-block; height:12px; width:10px; vertical-align:middle; margin-top:-2px; cursor:pointer;}
+#TreeView li > span       {background:url(data:image/x-icon;base64,R0lGODlhEABAAPcAAAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4ODg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEhISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdHR0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpaWltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1tbW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CAgIGBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOTk5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zMzM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///yH5BAEAAP4ALAAAAAAQAEAAAAjvAP0JHEiwoMGDCBMqXOjPV6SHECP5Ohjpn8WL/yJR3MePH4x9++ppNBjJnkkY9d6FG1kwEj0YMGFuY0kwUrx37GCgA2eN5sBI4bBNgxGNGTKfAiMx85ULF65bupA2jAhxIsOrWLNq3cr1qkOqEilivCg1EseOIEVSNGky5UqKL2PCmEnxJjt1O3tSDDpNWtGjFJc2fRr14FeqVrsqXsy4McPDERPXHGux7Fl+acuytee2LD22KemStIuXZ1m+fo2WFewUqlTIVR3Lnk17K+yHkn9SzrhRLkrNoFV69i26Jem8p30DJsma8GuwYWs3DggAOw==) no-repeat;}
+#TreeView li > span       {background-position:-3px -35px;}
+#TreeView li > span.macro {background-position:-3px -51px;}
+#TreeView li > span.close {background-position:-3px -3px;}
+#TreeView li > span.open  {background-position:-3px -19px;}
+#TreeView li[id*='Topic'] {cursor:pointer;}
+#TreeView ul              {padding-left:14px;}
+#TreeView li > span       {margin-right:5px;}
+#TreeView ul:first-child  {padding:0px; margin:8px 0px 0px 12px; padding-bottom:9px;}

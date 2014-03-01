@@ -1,0 +1,8 @@
+#SplashView                                              {visibility:hidden;}
+#SplashView                                              {display:table; color:#000000; position:absolute; width:100%; height:100%; top:0px; left:0px; z-Index:65535; overflow:hidden;}
+#SplashView *                                            {white-space:nowrap;}
+#SplashView > div                                        {display:table-cell; height:100%; width:100%; vertical-align:middle; text-align:center; padding:48px;}
+#SplashView > div > div                                  {display:inline-block; text-align:left;}
+#SplashView > div > div > span                           {display:inline-block; font:48px sans-serif; font-weight:bold; padding:14px 23px 13px 22px; border:4px solid #A7A7A0; color:#A7A7A0;}
+#SplashView > div > div > span:first-child + span + span {display:block; font-size:12px; font-weight:normal; border:0px solid; padding:12px 0px;}
+#SplashView > div > div > span:first-child + span        {color:#E7E7E0; background:#A7A7A0; padding:14px 23px 13px 20px;}
