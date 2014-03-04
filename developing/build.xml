@@ -311,8 +311,9 @@
     <mkdir dir="${build}/html/${project}"/>    
     <copy tofile="${build}/html/${project}/license.txt" file="${workspace}/.license"/>
     <copy tofile="${build}/html/${project}/${project}.html" file="${build}/${sources}/${project}.html"/>
-    <echo>Make HTA version</echo>   
+    <echo>Make HTA version</echo>
     <mkdir dir="${build}/hta/${project}"/>
+    <copy tofile="${build}/hta/${project}/wotexx.ico" file="${build}/${sources}/wotexx.ico"/>
     <copy tofile="${build}/hta/${project}/license.txt" file="${workspace}/.license"/>
     <copy tofile="${build}/hta/${project}/${project}.hta" file="${build}/${sources}/${project}.hta"/>
     <echo>Make HTML empty version</echo>    
@@ -321,6 +322,7 @@
     <copy tofile="${build}/html_empty/${project}/${project}.html" file="${build}/${sources}/${project}_empty.html"/>
     <echo>Make HTA empty version</echo>
     <mkdir dir="${build}/hta_empty/${project}"/>        
+    <copy tofile="${build}/hta_empty/${project}/wotexx.ico" file="${build}/${sources}/wotexx.ico"/>
     <copy tofile="${build}/hta_empty/${project}/license.txt" file="${workspace}/.license"/>    
     <copy tofile="${build}/hta_empty/${project}/${project}.hta" file="${build}/${sources}/${project}_empty.hta"/>
     <echo>Make Source version</echo>
@@ -341,10 +343,10 @@
     <touch datetime="${timing}" pattern="yyyyMMdd">
       <fileset dir="${build}"/>
     </touch>
-    <zip destfile="./${project}-${version}-html.zip" compress="true" filesonly="true" basedir="${build}/html/${project}"/>
-    <zip destfile="./${project}-${version}-hta.zip" compress="true" filesonly="true" basedir="${build}/hta/${project}"/>
-    <zip destfile="./${project}-${version}-html-empty.zip" compress="true" filesonly="true" basedir="${build}/html_empty/${project}"/>
-    <zip destfile="./${project}-${version}-hta-empty.zip" compress="true" filesonly="true" basedir="${build}/hta_empty/${project}"/>
-    <zip destfile="./${project}-${version}-src.zip" compress="true" filesonly="true" basedir="${build}/src/${project}"/>
+    <zip destfile="./${project}-${version}-html.zip" compress="true" filesonly="true" basedir="${build}/html"/>
+    <zip destfile="./${project}-${version}-hta.zip" compress="true" filesonly="true" basedir="${build}/hta"/>
+    <zip destfile="./${project}-${version}-html-empty.zip" compress="true" filesonly="true" basedir="${build}/html_empty"/>
+    <zip destfile="./${project}-${version}-hta-empty.zip" compress="true" filesonly="true" basedir="${build}/hta_empty"/>
+    <zip destfile="./${project}-${version}-src.zip" compress="true" filesonly="true" basedir="${build}/src"/>
   </target>
 </project>
