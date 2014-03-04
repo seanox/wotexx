@@ -332,31 +332,30 @@ Dialog.explain = function(object) {
     var objects;
     var loop;
     var element;
-    var method;
+    var event;
+    var method;    
     
     objects = object.instance.object.querySelectorAll("*[id]");;
 
     for (loop = 0; objects && loop < objects.length; loop++) {
 
         element = objects[loop].getAttribute("id");
+        element = element.replace(new RegExp("^" +  object.instance.context), "");
 
-        try {if (!element || typeof (element = eval(element)) != "function") continue;
-        } catch (exception) {
+        for (var entry in object) {
         
-            continue;
-        }
-        
-        for (var entry in element) {
-        
-            if (typeof element[entry] != "function" || !element.hasOwnProperty(entry)) continue;
+            if (typeof object[entry] != "function" || !object.hasOwnProperty(entry)) continue;
             
-            method = entry.match(/^on([A-Z].*)/);
+            event = String(entry).match(/^on([A-Z][a-z]+)/);
             
-            if (!method || !method.length || method.length < 2) continue;
+            if (!event || !event.length || event.length < 2) continue;
             
-            method = method[1].charAt(0).toLowerCase() + method[1].slice(1);
+            method = "on" + event[1] + element;
+            event  = event[1].toLowerCase(); 
             
-            Application.registerEvent(objects[loop], method, element[entry]);            
+            if (entry != method) continue;
+
+            Application.registerEvent(objects[loop], event, object[entry]);            
         }
     }
 };
@@ -392,6 +391,24 @@ Dialog.bind = function(options) {
         Dialog.explain(this);
 
         if (this.customize) this.customize();
+    }
+};
+
+/**
+ *  Rueckgabe true, wenn der Dialog atuell dargestellt wird.
+ *  @param  object optionale Angabe der GUI-Komponente
+ *  @return true, wenn der Dialog atuell dargestellt wird
+ */
+Dialog.isVisible = function(object) {
+
+    if (!object) object = this;
+
+    object.bind();
+    
+    try {return object.instance.object.style.display  == "inline";
+    } catch (exception) {
+    
+        return false;
     }
 };
 
@@ -552,11 +569,16 @@ Dialog.hide = function(object) {
     
     shield.style.display = "none";
     shield.style.zIndex  = 0;
-
-    document.body.style.overflow = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_OVERFLOW + Dialog.level);
-    document.body.style.width    = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_WIDTH + Dialog.level);
-    document.body.style.height   = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_HEIGHT + Dialog.level);
-
+    
+    try {document.body.style.overflow = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_OVERFLOW + Dialog.level);
+    } catch (exception) {
+    
+        //keine Fehlerbehandlung vorgesehen
+    }
+    
+    document.body.style.width  = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_WIDTH + Dialog.level);
+    document.body.style.height = document.body.getAttribute(Dialog.ATTRIBUTE_STYLE_HEIGHT + Dialog.level);
+    
     object.instance.object.style.display = "none";
     object.instance.object.style.zIndex  = 0;
 

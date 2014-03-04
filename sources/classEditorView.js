@@ -26,7 +26,7 @@ EditorView.timing;
 /** Initialisiert die EditorView. */
 EditorView.initialize = function() {
 
-    //TODO: if (!window.external) return;
+    if (!window.external) return;
 
     Application.registerEvent(document, "keydown", EditorView.onControl);
     Application.registerEvent(document, "keypress", EditorView.onControl);
@@ -63,7 +63,7 @@ EditorView.onControl = function(event) {
 
     event = event || window.event;
     
-    EditorView.control = event.altKey && !event.type.match(/keyup/i);
+    EditorView.control = event.keyCode == 93 && !event.type.match(/keyup/i);
     
     if (EditorView.control) EditorView.timing = new Date().getTime();
 };

@@ -97,7 +97,7 @@
   * Kontextsensitiver Aufruf für den direkten Einsprung in Kapitel ~~~
     über Kapitelnummer oder Kapitelname
   * Einfache Integration in Anwendungen; geeignet als ~~~
-    [[http://de.wikipedia.org/wiki/HTML-Applikation|Microsoft HTA (HTML-Application)]]
+    [[http://de.wikipedia.org/wiki/HTML-Applikation|Microsoft HTA (HTML-Application)]] ~~~
   * Skalierbares Layout
   * Individuelle Anpassungen und Erweiterungen
 
@@ -187,6 +187,34 @@
     Office-Anwendungen, Rich-Text- und WYSIWYG- Werkzeugen wird abgeraten, da
     diese unter Umständen mit zusätzlichen Formatinformationen die Wiki-Syntax
     verfremden können.
+    
+  ===AnwendungBearbeiten|Bearbeiten===
+
+    In der HTA-Version ist das Bearbeiten der Datei über die Werkzeugleiste
+    möglich, wenn die Datei über das Dateisystem geöffnet wurde. Der schreibende
+    Zugriff lässt sich zudem über die Meta-Information %%content-mode%%
+    einschränken, da das Bearbeiten nur mit der Option %%write%% möglich ist.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    ::mark!&lt;meta http-equiv="content-mode":: content="::mark!write::|read"&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    
+  ===AnwendungWerkzeuge|Werkzeuge===
+    
+    Einen schnellen Zugriff auf die verfügbaren Werkzeuge biete die Alt-Taste.\\
+    Die Freigabe der einzelnen Werkzeuge ist abhängig von der verwenden
+    Laufzeitumgebung.\\
+    \\
+    [[image:${Tools}]]    
 
   ===AnwendungAusgabe|Ausgabe===
 
@@ -211,7 +239,7 @@
     die Elemente des Baumes komplett geschlossen und es wird das erste Kapitel
     angezeigt. Erfolgt der Aufruf mit einem gültigen Kapitel wird dieses und der
     entsprechende Zweig im Navigationsbaum angezeigt.\\
-    
+
   ===AnwendungAnlagen|Anlagen===
   
     Anlagen sind eine spezielle Form von Platzhalter, welche in der Wiki-Syntax
@@ -402,8 +430,8 @@
       ~~    ...~~~~
       ~~  &lt;/body&gt;~~~~
       ~~&lt;/html&gt;~~~~
-    %]
-    
+    %] 
+
 ==Syntax|Syntax==
 
   Der verwendete Dialekt ist die Folge fehlender Standards. In der Bemühung um
@@ -1606,7 +1634,23 @@
         ContentView stellt einen Container für den Kapitelinhalt bereit.\\
         Die Formatierung und das Markup lassen sich bedingt in der Klasse
         [[EntwicklungJavaScriptClassWikiSyntax|WikiSyntax]] ändern.
+        
+      =====EntwicklungKomponentenControlDialog|ControlDialog=====
 
+        Dialog-Komponente zur Anzeige der Werkzeugleiste.\\
+        Dialoge besitzen eine feste Struktur, die einem Container mit einem
+        Titel- und Content-Element erwartet. Das Markup kann beliebig geändert
+        werden wenn die Elemente entsprechend der Vorgaben der Klasse
+        [[EntwicklungJavaScriptClassDialog|Dialog]] mit IDs versehen werden.
+
+      =====EntwicklungKomponentenMessageDialog|MessageDialog=====
+
+        Dialog-Komponente zur  Ausgabe von Informationen und Fehlermeldungen.\\
+        Dialoge besitzen eine feste Struktur, die einem Container mit einem
+        Titel- und Content-Element erwartet. Das Markup kann beliebig geändert
+        werden wenn die Elemente entsprechend der Vorgaben der Klasse
+        [[EntwicklungJavaScriptClassDialog|Dialog]] mit IDs versehen werden.
+        
       =====EntwicklungKomponentenSliderView|SliderView=====
 
         SliderView ist Trennung zwischen Navigation und Kapiteldarstellung.\\
@@ -1617,15 +1661,7 @@
         SliderView ist Trennung zwischen Navigation und Kapiteldarstellung.\\
         Das Markup kann beliebig geändert werden.
 
-      =====EntwicklungKomponentenMessageDialog|MessageDialog=====
-
-        Dialog-Komponente zur  Ausgabe von Informationen und Fehlermeldungen.\\
-        Dialoge besitzen eine feste Struktur, die einem Container mit einem
-        Titel- und Content-Element erwartet. Das Markup kann beliebig geändert
-        werden wenn die Elemente entsprechend der Vorgaben der Klasse
-        [[EntwicklungJavaScriptClassDialog|Dialog]] mit IDs versehen werden.
-
-      =====EntwicklungKomponenten|WaitDialog=====
+      =====EntwicklungKomponentenWaitDialog|WaitDialog=====
 
         Dialog-Komponente zur Sperrung der Oberfläche bei der Verarbeitung.\\
         Dialoge besitzen eine feste Struktur, die einem Container mit einem
@@ -1720,6 +1756,11 @@
       =====EntwicklungJavaScriptClassContentView|ContentView======
       
         ContentView stellt den Inhalt eines Kapitels dar.
+        
+      =====EntwicklungJavaScriptClassControlDialog|ControlDialog======
+      
+        ControlDialog zeigt die Werkzeugleiste beim Drücken der Alt-Taste.
+        Die Aktivierung der Werkzeug ist abhängig von der Laufzeitumgebung.
       
       =====EntwicklungJavaScriptClassDialog|Dialog======
       
@@ -1969,6 +2010,13 @@
       [%ant archive%] 
   
 ==Historie|Historie==
+
+  ~~**1.2014.0401 (Beta)**
+  * Erweiterung um die Werkzeugleiste mit der Alt-Taste
+  * Erweiterung um das direkte Bearbeiten des Inhalts in der HTA-Version
+  * Korrektur der Editor-Anbindung
+  * Korrektur der Dialog API beim automatischen Objekt/Event/Methoden-Verknüpfung
+  * Korrektur vom Build-Prozess  
 
   ~~**1.2014.0228**
   * Überarbeitung vom UI

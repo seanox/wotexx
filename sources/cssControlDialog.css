@@ -1,0 +1,14 @@
+#ControlDialog,
+#ControlDialog > div:first-child {display:none;}
+
+#ControlDialog img           {margin-top:4px; cursor:pointer;}
+#ControlDialog img  + img    {margin-left:24px;}
+#ControlDialog img[disabled] {cursor:default; opacity:0.25;
+                              -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+                              filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);}
+
+#ControlDialog > div                         {border-radius:4px;}
+#ControlDialog > div + div > div + div       {margin-top:-4px;} 
+#ControlDialog > div + div                   {background:url(data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEVPT0dD5XDeAAAAAXRSTlN/gFy0ywAAAApJREFUeJxjYgAAAAYAAzY3fKgAAAAASUVORK5CYII=) repeat; max-width:none; max-height:none;}
+#ControlDialog > div + div > div:first-child {padding:23px; display:block; border:1px solid #FFFFFF;
+                                              border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px;}
