@@ -222,6 +222,8 @@ MarkdownSyntax.buildChapter = function(content) {
         MarkdownSyntax.instance.marked.setOptions({renderer: new marked.Renderer(), gfm:true, tables:true, breaks:false, pedantic:false, sanitize:true, smartLists:true, smartypants:false});
     }
 
+    content = Syntax.customContent(content);
+
     //die internen Zeilenumbrueche werden wiederhergestellt
     content = content.replace(/(?:\02\01)|[\01\02]/g, '\n');
     content = MarkdownSyntax.instance.marked(content);
@@ -280,7 +282,7 @@ MarkdownSyntax.getChapter = function(chapter, exact) {
     
     if (!content) {
 
-        content = MarkdownSyntax.instance.chapters[index -1];
+        content = MarkdownSyntax.instance.chapters[index -1] || "";
         content = MarkdownSyntax.buildChapter(content);
 
         MarkdownSyntax.instance.builds[index -1] = content;
@@ -321,7 +323,7 @@ MarkdownSyntax.parse = function() {
     MarkdownSyntax.bind();
 
     //der Wiki-Content wird geladen
-    content = Syntax.getContent();
+    content = Syntax.getContent() || "";
     
     //alle Platzhalter werden eingesetzt
     content = content.replace(/\$\{(\w+)\}/g, MarkdownSyntax.onBuildData);
@@ -345,8 +347,8 @@ MarkdownSyntax.parse = function() {
     
     //Wiki-Format: Kapitel \n ... \n ===...
     //Wiki-Format: Kapitel \n ... \n ---...
-    content = content.replace(/(\01\s{0,3})([^=\01\02]+\01\02\s{0,3})={3,}/g, ' $1#$2');
-    content = content.replace(/(\01\s{0,3})([^-\01\02]+\01\02\s{0,3})-{3,}/g, ' $1##$2');
+    content = content.replace(/(\01\s{0,3})([^=\01\02]+\02\01\s{0,3})={3,}/g, ' $1#$2');
+    content = content.replace(/(\01\s{0,3})([^-\01\02]+\02\01\s{0,3})-{3,}/g, ' $1##$2');
 
     //Wiki-Format: <-- Kommentar -->
 

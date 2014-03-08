@@ -13,16 +13,16 @@ var Application = function() {
 /** Status der Fehleranzeige */
 Application.error;
 
+/** Kommandozeilenparameter (nur HTA) */
+Application.commandLine = hta ? hta.commandLine : null;
+
 /**
  *  Rueckgabe true, wenn es sich um eine HTA-Anwendung handelt.
  *  @return true, wenn es sich um eine HTA-Anwendung handelt
  */
 Application.isHta = function() {
 
-    try {if (!hta || !hta.commandLine) return false;
-    } catch (exception) {return false;}
-
-    return true;
+    return !!Application.commandLine;
 };
 
 /**
@@ -160,7 +160,7 @@ Application.getStartParameter = function(plain) {
     //alternativ werden die Kommandozeilen-Parameter bei HTA uebernommen
     if (Application.isHta()) {
 
-        options = hta.commandLine.match(/(?:-[^\s]*)|(?:[^\s]+)|(?:\"[^\"]*\")|(?:\'[^\']*\')/g);
+        options = Application.commandLine.match(/(?:-[^\s]*)|(?:[^\s]+)|(?:\"[^\"]*\")|(?:\'[^\']*\')/g);
         
         for (loop = 1, shadow = null; loop < options.length; loop++) {
         

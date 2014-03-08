@@ -1,5 +1,5 @@
 #SplashView                                              {visibility:hidden;}
-#SplashView                                              {display:table; color:#000000; position:absolute; width:100%; height:100%; top:0px; left:0px; z-Index:65535; overflow:hidden;}
+#SplashView                                              {display:table; color:#000000; position:absolute; width:100%; height:100%; top:0px; left:0px; overflow:hidden;}
 #SplashView *                                            {white-space:nowrap;}
 #SplashView > div                                        {display:table-cell; height:100%; width:100%; vertical-align:middle; text-align:center; padding:48px;}
 #SplashView > div > div                                  {display:inline-block; text-align:left;}

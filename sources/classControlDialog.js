@@ -90,7 +90,9 @@ ControlDialog.isValid = function() {
 /** Individuelle Anpassung/Konfiguration vom ControlDialog. */
 ControlDialog.customize = function() {
 
+    document.getElementById(ControlDialog.BUTTON_HOME).disabled = true;
     document.getElementById(ControlDialog.BUTTON_EDIT).disabled = true;
+    document.getElementById(ControlDialog.BUTTON_PRINT).disabled = true;
     document.getElementById(ControlDialog.BUTTON_SEARCH).disabled = true;
 };
 
@@ -98,6 +100,12 @@ ControlDialog.customize = function() {
 ControlDialog.show = function() {
 
     var access;
+    
+    if (Parser && Parser.getChapterSize() > 0)
+        document.getElementById(ControlDialog.BUTTON_HOME).disabled = false;
+
+    if (Parser && Parser.getChapterSize() > 0)
+        document.getElementById(ControlDialog.BUTTON_PRINT).disabled = false;
 
     if (Parser.getChapter(ControlDialog.CHPATER_SEARCH, true))
         document.getElementById(ControlDialog.BUTTON_SEARCH).disabled = false;
@@ -121,10 +129,12 @@ ControlDialog.onClickHome = function() {
 ControlDialog.onClickEdit = function() {
 
     var shell;
+    var source;
 
-    shell = new ActiveXObject("Wscript.Shell");
+    shell  = new ActiveXObject("Wscript.Shell");
+    source = decodeURI(String(window.location)).replace(/^file:\/+/, '').replace(/\//g, '\\');
     
-    shell.Run("notepad.exe " + String(window.location).substring(8), 3);
+    shell.Run("notepad.exe \"" + source + "\"", 3);
 };
 
 /** Einsprung beim Klick auf Print. */

@@ -20,6 +20,9 @@ Syntax.prototype.interpreter;
 /** Instanz von Syntax fuer statische Objektzugriffe */
 Syntax.instance;
 
+/** Liste der benutzerdefinierten Filter (Ausdruecke) */
+Syntax.customPattern;
+
 /** Bindet die aktuelle Instanz ein. */
 Syntax.bind = function() {
 
@@ -131,6 +134,68 @@ Syntax.getContent = function() {
 
     return content;
 };
+
+/**
+ *  Ermittelt benutzerdefinierte Filter (Ausdruecke) und wendet diese an.
+ *  @param  content zu ersetzender Inhalt
+ *  @return der ersetzte Inhalt
+ */
+Syntax.customContent = function(content) {
+
+    var loop;
+    var scripts;
+    var data;
+    var filter;
+    var pattern;
+    
+    if (!Syntax.customPattern) {
+    
+        Syntax.customPattern = new Array();
+
+        scripts = document.getElementsByTagName("script");
+        
+        //die eingebetten Filter werden geladen
+        for (loop = 0, data = ""; scripts && loop < scripts.length; loop++) {
+
+            if (scripts[loop].getAttribute("type").match(/^\s*text\s*\/\s*filter\s*$/i)) data += scripts[loop].innerHTML + " ";
+        }
+        
+        //die Filter werder zeilenweise ermittelt
+        data = data.replace(/(\r\n)|(\n\r)|[\r\n]/g, '\n');
+        data = data.split("\n");
+        
+        for (loop = 0; loop < data.length; loop++) {
+        
+            //Ausdruck und Muster werden ermittelt
+            filter = data[loop].match(/\s*(.*?)\s*\-\>\s*(.*)\s*/);
+            
+            if (!filter || filter.length < 3) continue;
+            
+            pattern = filter[1].match(/\/(.*)\/(.*)/);
+            
+            if (!pattern || pattern.length < 3) continue;
+
+            //Ausdruck und Muster werden registriert
+            try {Syntax.customPattern[Syntax.customPattern.length] = [new RegExp(pattern[1], pattern[2]), filter[2]];
+            } catch (exception) {
+            
+                continue;
+            }
+        }
+    }
+    
+    for (loop = 0; loop < Syntax.customPattern.length; loop++) {
+    
+        //Ausdruck und Muster werden angewandt
+        try {content = content.replace(Syntax.customPattern[loop][0], Syntax.customPattern[loop][1]);
+        } catch (exception) {
+        
+            continue;
+        }
+    }
+    
+    return content;
+}; 
 
 /**
  *  Rueckgabe von true, wenn die Syntax komplett geladen ist.

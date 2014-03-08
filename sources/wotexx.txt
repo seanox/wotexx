@@ -121,6 +121,7 @@
   * Interne und externe Verweise (Links)
   * Individuelle und zusätzliche Styles und Attribute als direkte ~~~
     Angabe bei allen Befehlen
+  * Benutzerdefinierte Filter zur Erweiterung der Syntax
     
   Markdown-Syntax:
   
@@ -128,6 +129,7 @@
     Code-Blöcke, Horizontale Linien
   * Span-Elemente (Links, Betonung, Code, Grafiken)
   * Verschiedenes (Automatische Links, Backslash-Maskierung)
+  * Benutzerdefinierte Filter zur Erweiterung der Syntax  
 
 ==Systemanforderung|Systemanforderung==
 
@@ -352,6 +354,41 @@
         ~~  &lt;/body&gt;~~~~
         ~~&lt;/html&gt;~~~~
       %]
+      
+  ===AnwendungFilter|Filter===
+  
+    Basierend auf regulären Ausdrücken, lässt sich Syntax der Parser
+    benutzerdefiniert erweitern. Die Anwendung der Ausdrücke erfolgt nach der
+    Bildung der Kapitel und vor der Transformation der Parser-Syntax.\\
+    \\
+    Die Definition erfolgt zeilenweise in einem eigenen Skriptblock im Format
+    %%&lt;Ausdruck&gt; -&gt &lt;Ersetzung&gt;%%. Dabei kommt die typische Syntax
+    der regulären Ausdrücke und Platzhalter vom JavaScript zum Einsatz.\\
+    \\
+    [%!~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;title&gt;...&lt;/title&gt;~~~~
+      ~~    ::mark!&lt;script type="text/filter"&gt;::~~~~
+      ~~      /\[\[idrop:~~::mark!(.*?)::\]\]/ig ::mark!-&gt;:: &lt;object classid="..." value="::mark!$1::" .../&gt;~~~~
+      ~~      ....~~~~
+      ~~    ::mark!&lt;/script&gt;::~~~~      
+      ~~    &lt;script type="text/wiki"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;script type="text/javascript"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/script&gt;~~~~
+      ~~    &lt;style type="text/css"&gt;~~~~
+      ~~      ...~~~~
+      ~~    &lt;/style&gt;~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
     
   ===AnwendungMarkdown|Markdown===
   
@@ -2011,12 +2048,20 @@
   
 ==Historie|Historie==
 
-  ~~**1.2014.0401 (Beta)**
+  ~~**1.2014.0401 RC2**
+  * Erweiterung um benutzerdefinierte Filter, auf Basis von regulären ~~~
+    Ausdrücken, zum einfachen Ausbau der Syntax
+  * Korrektur vom Aufruf des Editor bei Pfaden mit Leerzeichen/Sonderzeichen 
+  * Korrektur vom Markdown-(Pre)Parser zur korrekten Ermittlung der Kapitel
+  * Korrektur der HTA-Erkennung unter Windows 7
+  * Optimierung beim Umgang mit leerem Inhalt
+  
+  ~~**1.2014.0401 RC1**
   * Erweiterung um die Werkzeugleiste mit der Alt-Taste
   * Erweiterung um das direkte Bearbeiten des Inhalts in der HTA-Version
   * Korrektur der Editor-Anbindung
-  * Korrektur der Dialog API beim automatischen Objekt/Event/Methoden-Verknüpfung
-  * Korrektur vom Build-Prozess  
+  * Korrektur der Dialog-API beim automatischen Objekt/Event/Methoden-Verknüpfung
+  * Korrektur vom Build-Prozess
 
   ~~**1.2014.0228**
   * Überarbeitung vom UI

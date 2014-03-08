@@ -366,6 +366,8 @@ WikiSyntax.buildChapter = function(content) {
     //die internen Direktiven werden aufgeloest
     content = content.replace(/[^~]~~~\02\s*/g, ' ');
 
+    content = Syntax.customContent(content);
+
     //Wiki-Format: [[Link|Titel]]
 
     content = content.replace(/\[\[(.*?)\]\]/g, WikiSyntax.onBuildLink);
@@ -473,7 +475,7 @@ WikiSyntax.getChapter = function(chapter, exact) {
 
     if (!content) {
 
-        content = WikiSyntax.instance.chapters[index -1];
+        content = WikiSyntax.instance.chapters[index -1] || "";
         content = WikiSyntax.buildChapter(content);
 
         WikiSyntax.instance.builds[index -1] = content;
@@ -515,7 +517,7 @@ WikiSyntax.parse = function() {
     WikiSyntax.bind();
 
     //der Wiki-Content wird geladen
-    content = Syntax.getContent();
+    content = Syntax.getContent() || "";
     
     //alle Platzhalter werden eingesetzt
     content = content.replace(/\$\{(\w+)\}/g, WikiSyntax.onBuildData);

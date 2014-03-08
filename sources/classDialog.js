@@ -454,7 +454,7 @@ Dialog.show = function(object) {
     shield.style.width    = width  + "px";
     shield.style.right    = "0px";
     shield.style.bottom   = "0px";
-    shield.style.zIndex   = level;
+    shield.style.zIndex   = level || 0;
 
     //Sonderfall Firefox: Die Eigenschaft zur nachtraeglichen Veraenderung des
     //Groesse von Textarea-Elementen wird per CSS unterbunden
@@ -469,7 +469,7 @@ Dialog.show = function(object) {
     object.instance.object.style.top      = "-10000px";
     object.instance.object.style.left     = "-10000px";
     object.instance.object.style.display  = "inline";
-    object.instance.object.style.zIndex   = level;
+    object.instance.object.style.zIndex   = level || 0;
 
     height = (Display.getInnerHeight() /2) +Display.getScrollHeight() -((object.instance.object.offsetHeight) /2);
     width  = (Display.getInnerWidth() /2) +Display.getScrollWidth() -(object.instance.object.offsetWidth /2);
