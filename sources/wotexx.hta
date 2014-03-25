@@ -33,6 +33,7 @@
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1;">
     <meta http-equiv="content-mode" content="read|write">
     <meta http-equiv="content-dialect" content="wiki|markdown">
+    <meta http-equiv="content-editor" content="notepad.exe ${file}">
     <meta http-equiv="x-ua-compatible" content="ie=9">
     <meta http-equiv="x-ua-window" content="top=0px; left=20%; width=80%; height=100%;">
     <title>Seanox WoTeXX</title>
@@ -242,6 +243,25 @@
       ~~&lt;html&gt;~~~~
       ~~  &lt;head&gt;~~~~
       ~~    ::mark!&lt;meta http-equiv="content-mode":: content="::mark!write::|read"&gt;~~~~
+      ~~    &lt;meta http-equiv="content-editor" content="notepad.exe ${file}"&gt;~~~~      
+      ~~    ...~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    Zum Bearbeiten wir ein externer Editor geöffnet.\\
+    Bei Auslieferung ist dies das Windows Notepad, wenn kein anderer über die
+    Meta-Information %%content-editor%% gesetzt wurde.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;meta http-equiv="content-mode" content="write|read"&gt;~~~~
+      ~~    ::mark!&lt;meta http-equiv="content-editor":: content="::mark!notepad.exe ${file}::"&gt;~~~~      
       ~~    ...~~~~
       ~~  &lt;/head&gt;~~~~
       ~~  &lt;body&gt;~~~~
@@ -2088,6 +2108,9 @@
   
 ==Historie|Historie==
 
+  ~~**1.2014.0401 RC3**
+  * Erweiterung um die Konfigurtion vom Editor über die Meta-Informationen 
+
   ~~**1.2014.0401 RC2**
   * Erweiterung um benutzerdefinierte Filter, auf Basis von regulären ~~~
     Ausdrücken, zum einfachen Ausbau der Syntax
@@ -2535,7 +2558,7 @@ chapters 12--14"). Three dots ... will be converted to an ellipsis.
         </div>
       </div>
     </div>    
-    <div id="MessageDialog" class="dialog">
+    <div id="MessageDialog">
       <div id="MessageDialogTitle"></div>
       <div>
         <div>
@@ -2559,7 +2582,7 @@ chapters 12--14"). Three dots ... will be converted to an ellipsis.
         <div></div>
         <div></div>        
       </div>
-    </div>
+    </div>    
     <div id="ControlDialog">
       <div id="ControlDialogTitle"></div>
       <div>

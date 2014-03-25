@@ -202,6 +202,25 @@
       ~~&lt;html&gt;~~~~
       ~~  &lt;head&gt;~~~~
       ~~    ::mark!&lt;meta http-equiv="content-mode":: content="::mark!write::|read"&gt;~~~~
+      ~~    &lt;meta http-equiv="content-editor" content="notepad.exe ${file}"&gt;~~~~      
+      ~~    ...~~~~
+      ~~  &lt;/head&gt;~~~~
+      ~~  &lt;body&gt;~~~~
+      ~~    ...~~~~
+      ~~  &lt;/body&gt;~~~~
+      ~~&lt;/html&gt;~~~~
+    %]
+    \\
+    Zum Bearbeiten wir ein externer Editor geöffnet.\\
+    Bei Auslieferung ist dies das Windows Notepad, wenn kein anderer über die
+    Meta-Information %%content-editor%% gesetzt wurde.\\
+    \\
+    [%~~~~
+      ~~&lt;!DOCTYPE HTML PUBLIC "-/~~/W3C/~~/DTD HTML 4.01 Transitional/~~/EN"&gt;~~~~
+      ~~&lt;html&gt;~~~~
+      ~~  &lt;head&gt;~~~~
+      ~~    &lt;meta http-equiv="content-mode" content="write|read"&gt;~~~~
+      ~~    ::mark!&lt;meta http-equiv="content-editor":: content="::mark!notepad.exe ${file}::"&gt;~~~~      
       ~~    ...~~~~
       ~~  &lt;/head&gt;~~~~
       ~~  &lt;body&gt;~~~~
@@ -2048,17 +2067,17 @@
   
 ==Historie|Historie==
 
-  ~~**1.2014.0401 RC2**
+  ~~**1.2014.0401**
+  * Erweiterung um die Konfigurtion vom Editor über die Meta-Informationen 
   * Erweiterung um benutzerdefinierte Filter, auf Basis von regulären ~~~
     Ausdrücken, zum einfachen Ausbau der Syntax
+  * Erweiterung um die Werkzeugleiste mit der Alt-Taste
+  * Erweiterung um das direkte Bearbeiten des Inhalts in der HTA-Version
+  * Erweiterung der DOM-API um AddCssClass/RemoveCssClass/ExistCssClass
+  * Optimierung beim Umgang mit leerem Inhalt
   * Korrektur vom Aufruf des Editor bei Pfaden mit Leerzeichen/Sonderzeichen 
   * Korrektur vom Markdown-(Pre)Parser zur korrekten Ermittlung der Kapitel
   * Korrektur der HTA-Erkennung unter Windows 7
-  * Optimierung beim Umgang mit leerem Inhalt
-  
-  ~~**1.2014.0401 RC1**
-  * Erweiterung um die Werkzeugleiste mit der Alt-Taste
-  * Erweiterung um das direkte Bearbeiten des Inhalts in der HTA-Version
   * Korrektur der Editor-Anbindung
   * Korrektur der Dialog-API beim automatischen Objekt/Event/Methoden-Verknüpfung
   * Korrektur vom Build-Prozess
