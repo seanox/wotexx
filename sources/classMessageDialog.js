@@ -13,7 +13,7 @@ var MessageDialog = function() {
     this.context = "MessageDialog";
 
     //Option zum Sperren des GUI-Component
-    this.lock = true;
+    this.lock = false;
 
     //CallBack zur Datenrueckgabe
     this.call = null;
@@ -157,6 +157,10 @@ MessageDialog.isValid = function() {
 /** Individuelle Anpassung/Konfiguration vom MessageDialog. */
 MessageDialog.customize = function() {
 
+    MessageDialog.bind();
+    
+    Dom.addCssClass(MessageDialog.instance.object, ["dialog", "screen", "only"]);
+
     Application.registerEvent(document.getElementById(MessageDialog.BUTTON_OK), "click", MessageDialog.apply);
     Application.registerEvent(document.getElementById(MessageDialog.BUTTON_YES), "click", MessageDialog.apply);
     Application.registerEvent(document.getElementById(MessageDialog.BUTTON_NO), "click", MessageDialog.apply);
@@ -178,30 +182,19 @@ MessageDialog.customize = function() {
 MessageDialog.show = function(title, message, options, call) {
 
     var object;
-    var pattern;
     var focus;
 
     MessageDialog.bind();
     
     object = document.getElementById(MessageDialog.DIALOG_SYMBOL);
-    
-    object.className = MessageDialog.SYMBOL_QUESTION;
-    
-    pattern = "\\b(?:" + MessageDialog.SYMBOL_CRITICAL
-            + "|" + MessageDialog.SYMBOL_QUESTION
-            + "|" + MessageDialog.SYMBOL_EXCLAMATION
-            + "|" + MessageDialog.SYMBOL_EXCLAMATION + ")\\b";
-            
-    object.className = object.className.replace(new RegExp(pattern, "ig"), ' ');
 
-    if ((options & MessageDialog.OPTION_INFORMATION) != 0) object.className += " " + MessageDialog.SYMBOL_INFORMATION;
-    else if ((options & MessageDialog.OPTION_EXCLAMATION) != 0) object.className += " " + MessageDialog.SYMBOL_EXCLAMATION;
-    else if ((options & MessageDialog.OPTION_QUESTION) != 0) object.className += " " + MessageDialog.SYMBOL_QUESTION;
-    else if ((options & MessageDialog.OPTION_CRITICAL) != 0) object.className += " " + MessageDialog.SYMBOL_CRITICAL;
+    Dom.removeCssClass(object, [MessageDialog.SYMBOL_CRITICAL, MessageDialog.SYMBOL_QUESTION, MessageDialog.SYMBOL_EXCLAMATION, MessageDialog.SYMBOL_INFORMATION]);
 
-    object.className = object.className.replace(new RegExp("\\s+", "g"), ' ');
-    object.className = object.className.replace(/^\s+|\s+$/g, '');
-    
+    if ((options & MessageDialog.OPTION_INFORMATION) != 0) Dom.addCssClass(object, MessageDialog.SYMBOL_INFORMATION);
+    else if ((options & MessageDialog.OPTION_EXCLAMATION) != 0) Dom.addCssClass(object, MessageDialog.SYMBOL_EXCLAMATION);
+    else if ((options & MessageDialog.OPTION_QUESTION) != 0) Dom.addCssClass(object, MessageDialog.SYMBOL_QUESTION);
+    else if ((options & MessageDialog.OPTION_CRITICAL) != 0) Dom.addCssClass(object, MessageDialog.SYMBOL_CRITICAL);
+
     MessageDialog.instance.call = call;
     
     title = title || document.title;

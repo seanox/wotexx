@@ -29,3 +29,11 @@ WaitDialog.hide = Dialog.hide;
 
 /** Konstante fuer den Context WaitDialog */
 WaitDialog.CONTEXT = "WaitDialog";
+
+/** Individuelle Anpassung/Konfiguration vom WaitDialog. */
+WaitDialog.customize = function() {
+
+    WaitDialog.bind();
+    
+    Dom.addCssClass(WaitDialog.instance.object, ["screen", "only"]);
+};

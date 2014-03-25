@@ -45,7 +45,7 @@ Syntax.initialize = function(syntax) {
     
     Syntax.bind();
     
-    dialect = Application.getMetaParameter("content-dialect").replace(/\s+/g, '') || "";
+    dialect = (Application.getMetaParameter("content-dialect") || "").replace(/\s+/g, '');
     pattern = new RegExp("^\\s*text\\s*\\/\\s*(" + dialect + ")\\s*$", "i");
     
     scripts = document.getElementsByTagName("script");

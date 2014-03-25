@@ -89,6 +89,8 @@ ControlDialog.isValid = function() {
 
 /** Individuelle Anpassung/Konfiguration vom ControlDialog. */
 ControlDialog.customize = function() {
+    
+    Dom.addCssClass(ControlDialog.instance.object, ["screen", "only"]);
 
     document.getElementById(ControlDialog.BUTTON_HOME).disabled = true;
     document.getElementById(ControlDialog.BUTTON_EDIT).disabled = true;
@@ -110,7 +112,7 @@ ControlDialog.show = function() {
     if (Parser.getChapter(ControlDialog.CHPATER_SEARCH, true))
         document.getElementById(ControlDialog.BUTTON_SEARCH).disabled = false;
         
-    access = Application.getMetaParameter("content-mode").replace(/\s+/g, '') || "";
+    access = (Application.getMetaParameter("content-mode") || "").replace(/\s+/g, '');
     access = ("|" + access + "|").match(/\|write\|/);
     
     if (Application.isHta() && access && String(window.location).match(/^file:\/\//i))
@@ -130,11 +132,15 @@ ControlDialog.onClickEdit = function() {
 
     var shell;
     var source;
-
-    shell  = new ActiveXObject("Wscript.Shell");
-    source = decodeURI(String(window.location)).replace(/^file:\/+/, '').replace(/\//g, '\\');
+    var editor;
     
-    shell.Run("notepad.exe \"" + source + "\"", 3);
+    editor = (Application.getMetaParameter("content-editor") || "").replace(/^\s+|\s+$/g, '');
+    source = decodeURI(String(window.location)).replace(/^file:\/+/, '').replace(/\//g, '\\');
+    shell  = new ActiveXObject("Wscript.Shell");
+    
+    if (!editor) editor = "notepad.exe ${file}";
+
+    shell.Run(editor.replace(/\$\{\s*file\s*\}/ig, '"' + source + '"'), 3);
 };
 
 /** Einsprung beim Klick auf Print. */

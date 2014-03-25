@@ -116,6 +116,84 @@ Dom.getOuterHTML = function(object) {
 };
 
 /**
+ *  Fuegt eine oder mehrere CSS-Klassen beim angegebenen Objekt hinzu.
+ *  Zur Angabe mehrerer Klassen werden diese durch Leerzeichen getrennt oder als
+ *  Array uebergeben. 
+ *  @param object HTML-Element
+ *  @param css    CSS-Klasse(n)
+ */
+Dom.addCssClass = function(object, css) {
+    
+    var loop;
+        
+    if (!css) return;
+    
+    if (!css.constructor || css.constructor !== Array) css = new Array(css);
+    else if (typeof css === "string") css = css.split(" ");
+    
+    for (loop = 0; loop < css.length; loop++) {
+        
+        if (object.className.match(new RegExp("(?:^|\\s)" + css[loop] + "(?:\\s|$)", "i"))) continue;
+        
+        object.className += " " + css[loop];
+    }
+    
+    object.className = object.className.replace(new RegExp("\\s+", "g"), ' ');
+    object.className = object.className.replace(/^\s+|\s+$/g, '');
+};
+
+/**
+ *  Entfernt eine oder mehrere CSS-Klassen beim angegebenen Objekt.
+ *  Zur Angabe mehrerer Klassen werden diese durch Leerzeichen getrennt oder als
+ *  Array uebergeben. 
+ *  @param object HTML-Element
+ *  @param css    CSS-Klasse(n)
+ */
+Dom.removeCssClass = function(object, css) {
+
+    var loop; 
+    
+    if (!css) return;
+    
+    if (!css.constructor || css.constructor !== Array) css = new Array(css);
+    else if (typeof css === "string") css = css.split(" ");
+
+    for (loop = 0; loop < css.length; loop++) {
+        
+        object.className = object.className.replace(new RegExp("(?:^|\\s)" + css[loop] + "(?:\\s|$)", "i"), "");
+    }
+    
+    object.className = object.className.replace(new RegExp("\\s+", "g"), ' ');
+    object.className = object.className.replace(/^\s+|\s+$/g, '');
+};
+
+/**
+ *  Rueckgabe true, wenn eine oder mehrere CSS-Klassen dem angegebenen Objekt
+ *  zugewiesen sind. Zur Angabe mehrerer Klassen werden diese durch Leerzeichen
+ *  getrennt oder als Array uebergeben. 
+ *  @param   object HTML-Element
+ *  @param   css    CSS-Klasse(n)
+ *  @returns true, wenn eine oder mehrere CSS-Klassen dem angegebenen Objekt
+ *           zugewiesen sind
+ */
+Dom.existCssClass = function(object, css) {
+
+    var loop; 
+    
+    if (!css) return false;
+    
+    if (!css.constructor || css.constructor !== Array) css = new Array(css);
+    else if (typeof css === "string") css = css.split(" ");
+
+    for (loop = 0; loop < css.length; loop++) {
+        
+        if (!object.className.match(new RegExp("(?:^|\\s)" + css[loop] + "(?:\\s|$)", "i"))) return false;
+    }
+    
+    return loop > 0;
+};
+
+/**
  *  Ermittelt eine CSS-Definition.
  *  Optional kann diese mit der Option remove entfernt werden.
  *  @param name   Name der CSS-Definition

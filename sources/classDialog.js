@@ -100,8 +100,8 @@ Dialog.escapeHtml = function(text) {
 Dialog.isFieldEmpty = function(field) {
 
     if ((typeof field) == "string") field = document.getElementById(field);
-
-    return field.className.match(new RegExp("\\b" + Dialog.STYLE_CLASS_EMPTY + "\\b", "i")) != null;
+    
+    return Dom.existCssClass(field, Dialog.STYLE_CLASS_EMPTY);
 };
 
 /**
@@ -131,7 +131,7 @@ Dialog.watchField = function(field, rule, style, value) {
 
     if (field.value.replace(/^\s+|\s+$/g, '') == "") {
 
-        if (!Dialog.isFieldEmpty(field)) field.className = field.className + " " + Dialog.STYLE_CLASS_EMPTY;
+        if (!Dialog.isFieldEmpty(field)) Dom.addCssClass(field, Dialog.STYLE_CLASS_EMPTY);
 
         field.value = value;
     }
@@ -139,15 +139,15 @@ Dialog.watchField = function(field, rule, style, value) {
     Application.registerEvent(field, "focus", function() {
 
         if (Dialog.isFieldEmpty(field) && field.value.replace(/^\s+|\s+$/g, '') == value) field.value = "";
-
-        field.className = field.className.replace(new RegExp("\\b" + Dialog.STYLE_CLASS_EMPTY + "\\b", "ig"), ' ').replace(/\s+/g, ' ');
+        
+        Dom.removeCssClass(field, Dialog.STYLE_CLASS_EMPTY);
     });
 
     Application.registerEvent(field, "blur", function() {
 
         if (field.value.replace(/^\s+|\s+$/g, '') == "") {
-
-            if (!Dialog.isFieldEmpty(field)) field.className = field.className + " " + Dialog.STYLE_CLASS_EMPTY;
+            
+            if (!Dialog.isFieldEmpty(field)) Dom.addCssClass(field, Dialog.STYLE_CLASS_EMPTY);
 
             field.value = value;
         }
@@ -288,8 +288,9 @@ Dialog.addShield = function(object) {
     if (object && object.instance.object && object.instance.object.getAttribute(Dialog.ATTRIBUTE_SHIELD_ID)) return;
 
     shield = document.createElement("div");
+    
+    Dom.addCssClass(shield, ["dialog", "shield", "screen", "only"]);
 
-    shield.className = "dialog shield";
     shield.setAttribute("id", Dialog.CONTEXT_SHIELD + Application.getSerial());
     shield.setAttribute(Dialog.ATTRIBUTE_DIALOG_BINDING, object.instance.context);
     
@@ -449,12 +450,12 @@ Dialog.show = function(object) {
 
     shield = document.getElementById(object.instance.object.getAttribute(Dialog.ATTRIBUTE_SHIELD_ID));        
 
-    shield.style.display  = "block";
-    shield.style.height   = height + "px";
-    shield.style.width    = width  + "px";
-    shield.style.right    = "0px";
-    shield.style.bottom   = "0px";
-    shield.style.zIndex   = level || 0;
+    shield.style.display = "block";
+    shield.style.height  = height + "px";
+    shield.style.width   = width  + "px";
+    shield.style.right   = "0px";
+    shield.style.bottom  = "0px";
+    shield.style.zIndex  = level || 0;
 
     //Sonderfall Firefox: Die Eigenschaft zur nachtraeglichen Veraenderung des
     //Groesse von Textarea-Elementen wird per CSS unterbunden

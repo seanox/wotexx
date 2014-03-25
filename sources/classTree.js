@@ -57,7 +57,9 @@ Tree.onClickNode = function(instance, node, open) {
 
     if (!node || !node.parentNode || !(state == 1 || state == -1)) return;
     
-    node.className = (state != 1 || open) ? node.className.replace(/\bclose\b/, 'open') : node.className.replace(/\bopen\b/, 'close');
+    Dom.removeCssClass(node, ["close", "open"]);
+
+    Dom.addCssClass(node, state != 1 || open ? "open" : "close" );
 
     node.setAttribute("state", (state != 1 || open) ? 1 : -1);
 
