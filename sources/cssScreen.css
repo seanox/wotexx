@@ -203,3 +203,5 @@ img.symbol.node.index               {background-position:-035px -019px;}
 *.blue                              {color:#0040FF;}
 *.bold                              {font-weight:bold;}
 *.border                            {border:1px solid;}
+
+*.print.only {display:none!important;}

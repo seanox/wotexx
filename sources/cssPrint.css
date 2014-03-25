@@ -4,6 +4,8 @@ body {overflow:auto; background:#FFFFFF;}
 
 #ContentView *.break {page-break-after:always;}
 
-#TreeView    {display:none;}
-#SliderView  {display:none;}
-#SearchMacro {display:none;}
+#TreeView      {display:none!important;}
+#SliderView    {display:none!important;}
+#SearchMacro   {display:none!important;}
+
+*.screen.only {display:none!important;}
