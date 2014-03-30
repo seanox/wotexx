@@ -73,7 +73,7 @@ SearchMacro.LOGIC = 2;
 SearchMacro.SEPARATOR = 3;
 
 /** maximale Laenge vom Vorschautext */
-SearchMacro.PREVIEW_LENGHT = 500;
+SearchMacro.PREVIEW_LENGTH = 500;
 
 /**
  *  Maskiert die HTML-Struktur beeinflussenden Steuerzeichen im uebergebenen
@@ -443,7 +443,7 @@ SearchMacro.computePreview = function(range, content) {
     //der Quote 1/3 wird das erste Substantiv, sonst der Satzanfang verwendet
     left = content.substring(0, range.left);
     
-    if (right.length > SearchMacro.PREVIEW_LENGHT /2.3) {
+    if (right.length > SearchMacro.PREVIEW_LENGTH /2.3) {
     
         match = left.match(/.*(?:(?:[\!\?\.]\s+)|(?:\b))([A-Z].*)$/);
         left  = match && match.length ? match[1] : left;
@@ -457,9 +457,9 @@ SearchMacro.computePreview = function(range, content) {
     //Satzanfang und Textfund werden zusammengesetzt
     text = left + text;
     
-    if (text.length + right.length > SearchMacro.PREVIEW_LENGHT) {
+    if (text.length + right.length > SearchMacro.PREVIEW_LENGTH) {
     
-        size  = SearchMacro.PREVIEW_LENGHT -text.length;
+        size  = SearchMacro.PREVIEW_LENGTH -text.length;
         match = right.match(new RegExp("(.{" + size + "}.)\\b"));
         right = match && match.length ? match[1] + "..." : right;
     }

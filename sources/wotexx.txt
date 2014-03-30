@@ -2074,6 +2074,7 @@
   * Erweiterung um die Werkzeugleiste mit der Alt-Taste
   * Erweiterung um das direkte Bearbeiten des Inhalts in der HTA-Version
   * Erweiterung der DOM-API um AddCssClass/RemoveCssClass/ExistCssClass
+  * Erweiterung der ContentView-API um Events (call, prepare, show, blind)
   * Optimierung beim Umgang mit leerem Inhalt
   * Korrektur vom Aufruf des Editor bei Pfaden mit Leerzeichen/Sonderzeichen 
   * Korrektur vom Markdown-(Pre)Parser zur korrekten Ermittlung der Kapitel

@@ -28,6 +28,21 @@ ContentView.prototype.chapters;
 /** Bindet die Klasse als GUI-Component ein. */
 ContentView.bind = Component.bind;
 
+/** Assoziatives Array von Events und Listener */
+ContentView.listener;
+
+/** Konstante fuer das Event call */
+ContentView.EVENT_CALL = "call";
+
+/** Konstante fuer das Event prepare */
+ContentView.EVENT_PREPARE = "prepare";
+
+/** Konstante fuer das Event show */
+ContentView.EVENT_SHOW = "show";
+
+/** Konstante fuer das Event blind */
+ContentView.EVENT_BLIND = "blind";
+
 /** Initialisiert die ContentView. */
 ContentView.initialize = function() {
 
@@ -82,6 +97,8 @@ ContentView.call = function(chapter) {
 
     //ist der Editor aktiviert, wird der Aufruf ignoriert
     if (EditorView.control) return true;
+    
+    ContentView.fireEvent(ContentView.EVENT_CALL, [chapter]);
 
     index = Toc.indexOf(chapter);
 
@@ -115,6 +132,8 @@ ContentView.prepare = function(chapter) {
     var macro;
 
     ContentView.bind();
+    
+    ContentView.fireEvent(ContentView.EVENT_PREPARE, [chapter]);
 
     chapter = Toc.resolve(chapter);
     chapter = String(chapter).split(".");
@@ -160,6 +179,8 @@ ContentView.prepare = function(chapter) {
  *  @param chapter Kapitel
  */
 ContentView.blind = function(chapter) {
+    
+    ContentView.fireEvent(ContentView.EVENT_BLIND, [chapter]);
 
     chapter = Toc.indexOf(chapter);
 
@@ -236,6 +257,8 @@ ContentView.show = function(chapter) {
     var part;
 
     ContentView.bind();
+    
+    ContentView.fireEvent(ContentView.EVENT_SHOW, [chapter]);
 
     if (!ContentView.isValid()) return;
 
@@ -288,6 +311,120 @@ ContentView.show = function(chapter) {
 
     //ggf. wird das Kapitel in den Sichbereich geholt
     window.setTimeout(function() {ContentView.scrollTo(index);}, 25);
+};
+
+/**
+ *  Prueft und filter gueltige Events.
+ *  @param  event Event
+ *  @return event or null
+ */
+ContentView.filterEvent = function(event) {
+    
+    var pattern;
+
+    pattern = "^" + ContentView.EVENT_CALL
+            + "|" + ContentView.EVENT_PREPARE
+            + "|" + ContentView.EVENT_SHOW
+            + "|" + ContentView.EVENT_BLIND + "$";
+    
+    if (!event || !event.match(new RegExp(pattern), "i")) return null;
+
+    return event.toLowerCase();
+};
+
+/**
+ *  Hebt die Registrierung eines Listeners zu einem Event auf.
+ *  @param event Event
+ *  @param call  Listener
+ */
+ContentView.removeEventListener = function(event, call) {
+    
+    var loop;
+    
+    event = ContentView.filterEvent(event);
+    
+    if (!event) return;
+    if (!ContentView.listener) return;
+    if (!ContentView.listener[event]) return;
+    
+    for (loop = 0; loop < ContentView.listener[event].length; loop++) {
+        
+        if (ContentView.listener[event][loop] != call) continue;
+        
+        ContentView.listener[event].splice(loop, 1);
+            
+        return;
+    }
+};
+
+/**
+ *  Registriert einen Listener zu einem Event.
+ *  @param event Event
+ *  @param call  Listener
+ */
+ContentView.registerEventListener = function(event, call) {
+    
+    var loop;
+    
+    event = ContentView.filterEvent(event);
+    
+    if (!event) return;
+    if (!ContentView.listener) ContentView.listener = new Object();
+    if (!ContentView.listener[event]) ContentView.listener[event] = new Array();
+
+    for (loop = 0; loop < ContentView.listener[event].length; loop++) {
+        
+        if (ContentView.listener[event][loop] == call) return;
+    }
+    
+    ContentView.listener[event][ContentView.listener[event].length] = call;
+};
+
+/**
+ *  Feuert einen Event zu einem Listener.
+ *  @param call    Listener
+ *  @param options Argumente
+ *  @param wait    option beim asynchronen Aufruf
+ */
+ContentView.fireEventTask = function(call, options, wait) {
+    
+    var string;
+    var loop;
+    
+    if (!wait) {window.setTimeout(function() {ContentView.fireEventTask(call, options, true);}, 0); return;}
+
+    for (loop = 0, string = "";  options && loop < options.length; loop++) {
+        
+        string += (loop > 0 ? "," : "") + "options[" + loop + "]";
+    }
+
+    try {eval("call(" + string + ")");
+    } catch (exception) {
+
+        return;
+    }
+};
+
+/**
+ *  Feuert einen Event zu allen registrierten Listenern.
+ *  @param event   Event
+ *  @param options Argumente
+ */
+ContentView.fireEvent = function(event, options) {
+    
+    var loop;
+    var calls;
+    
+    event = ContentView.filterEvent(event);
+    
+    if (!event) return;
+    if (!ContentView.listener) return;
+    if (!ContentView.listener[event]) return;
+
+    for (loop = 0; loop < ContentView.listener[event].length; loop++) {
+        
+        ContentView.fireEventTask(ContentView.listener[event][loop], options);
+    }
 };
 
 Application.registerEvent(window, "load", function() {ContentView.initialize();});

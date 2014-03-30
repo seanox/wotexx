@@ -171,10 +171,10 @@ Dom.removeCssClass = function(object, css) {
  *  Rueckgabe true, wenn eine oder mehrere CSS-Klassen dem angegebenen Objekt
  *  zugewiesen sind. Zur Angabe mehrerer Klassen werden diese durch Leerzeichen
  *  getrennt oder als Array uebergeben. 
- *  @param   object HTML-Element
- *  @param   css    CSS-Klasse(n)
- *  @returns true, wenn eine oder mehrere CSS-Klassen dem angegebenen Objekt
- *           zugewiesen sind
+ *  @param  object HTML-Element
+ *  @param  css    CSS-Klasse(n)
+ *  @return true, wenn eine oder mehrere CSS-Klassen dem angegebenen Objekt
+ *          zugewiesen sind
  */
 Dom.existCssClass = function(object, css) {
 
