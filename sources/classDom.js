@@ -160,7 +160,7 @@ Dom.removeCssClass = function(object, css) {
 
     for (loop = 0; loop < css.length; loop++) {
         
-        object.className = object.className.replace(new RegExp("(?:^|\\s)" + css[loop] + "(?:\\s|$)", "i"), "");
+        object.className = object.className.replace(new RegExp("(?:^|\\s)" + css[loop] + "(?:\\s|$)", "i"), " ");
     }
     
     object.className = object.className.replace(new RegExp("\\s+", "g"), ' ');
