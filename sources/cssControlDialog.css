@@ -1,11 +1,13 @@
 #ControlDialog,
 #ControlDialog > div:first-child {display:none;}
 
-#ControlDialog img           {margin-top:4px; cursor:pointer;}
-#ControlDialog img  + img    {margin-left:24px;}
-#ControlDialog img[disabled] {cursor:default; opacity:0.25;
-                              -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
-                              filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);}
+#ControlDialog * {-webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+
+#ControlDialog img                  {margin-top:4px; cursor:pointer;}
+#ControlDialog img  + img           {margin-left:24px;}
+#ControlDialog img[inactive='true'] {cursor:default; opacity:0.25;
+                                     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+                                     filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=25);}
 
 #ControlDialog > div                         {border-radius:4px;}
 #ControlDialog > div + div > div + div       {margin-top:-4px;} 

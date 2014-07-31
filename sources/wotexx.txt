@@ -2067,6 +2067,11 @@
   
 ==Historie|Historie==
 
+  ~~**1.2014.0731**
+  * Korrektur der u.U. fehlerhaften (De)Aktivierung der Symbole in der Werkzeugleiste
+  * Korrektur der u.U. ausgefallenen Werkzeugleiste im IE
+  * Optimierung der Suche bei der Berechnung der Begriffannäherung zur Ermittlung der Textausschnitte
+
   ~~**1.2014.0401**
   * Erweiterung um die Konfigurtion vom Editor über die Meta-Informationen 
   * Erweiterung um benutzerdefinierte Filter, auf Basis von regulären ~~~
@@ -2260,6 +2265,10 @@
       ||Jokerzeichen
       ||Als Platzhalter mit unbestimmter Länge wird das Jokerzeichen verwendet
       ||M*tag
+      |-
+      ||Phrasen
+      ||Konstrukte aus mehren Begriffen werden in Anführungszeichen gefasst. Jokerzeichen werden auch hier unterstützt
+      ||"Montag * Dienstag"
       |-
       ||Verschachtelung mit Klammern
       ||Bedingungen in der Suchabfrage lassen sich mit runden Klammern beliebig verschachteln.

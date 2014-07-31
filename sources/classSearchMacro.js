@@ -351,70 +351,39 @@ SearchMacro.indexWords = function(words, content) {
 };
 
 /**
- *  Ermittelt den maximalen Abstand vom ersten Vorkommen aller gefundenen Muster
- *  im Suchtext zu einem der Muster.
- *  @param index Bezugsmusters im Index ab dem die Abstaende zu den anderen
- *               Muster berechnet wird.
- *  @param range Vorkommen aller Muster als mehrdimensionales Array
- */
-SearchMacro.matchRange = function(index, range) {
-
-    var loop;
-    var offset;
-
-    for (loop = 0, offset = -1; loop < range.length; loop++) {
-    
-        if (index == loop) continue;
-        
-        if (range[loop][0] < range[index][0]) return -1;
-        
-        offset = Math.max(offset, range[loop][0] -range[index][0]);
-    }
-
-    return offset;
-};
-
-/**
- *  Berechnet den kleinsten Bereich eines mehrdimensionales Arrays.
+ *  Ermittelt die Schnittmenge basierend auf letzter Position vom vordersten
+ *  Bereich und der ersten Position von hintersten Bereich. Beide Punkte
+ *  bilden den Auschnitt zur Textausgabe.
  *  @param index mehrdimensionales Arrays
  *  @param der ermittelte Bereich als annonymes Objekt.
  */
-SearchMacro.computeRange = function(index) {
-
+SearchMacro.indexRange = function(index) {
+    
+    var array;
+    var value;
     var loop;
-    var left;
-    var right;
-    var width;
+    var result;
+    var entry;
     
-    //keine Index, keine Position
-    if (!index || !index.length) return null;
+    result = new Array(-1, -1);
     
-    //nur ein Index, erste Position
-    if (index.length == 1) return {left:index[0][0], right:index[0][0]};
-
-    right = 0;
-    left  = 0;
+    for (loop = 0; loop < index.length; loop++) {
+        
+        entry = index[loop];
+        
+        value = entry[entry.length -1];
+        
+        if (result[0] < 0) result[0] = value;
+        else result[0] = Math.min(result[0], value);
     
-    while (true) {
-        
-        for (loop = 0; loop < index.length; loop++) {
-        
-            width = SearchMacro.matchRange(loop, index);
-            
-            if (width > 0 && (width < right -left || right == 0)) {left = index[loop][0]; right = left +width;}
-        }
-
-        //Verkuerzen der Positionen, um die Folgeabstaende zu berechnen
-        //liegen keine Daten mehr vor, ist keine Berechnung mehr moeglich
-        for (loop = 0; loop < index.length; loop++) {
-        
-            index[loop].shift();
-            
-            if (!index[loop].length) return {left:left, right:right};
-        }
+        value = entry[0];
+        if (result[1] < 0) result[1] = value;
+        else result[1] = Math.max(result[1], value);
     }
 
-    return null;
+    result.sort(function(a, b) {return a -b;});
+    
+    return {left:result[0], right:result[1]};
 };
 
 /**
@@ -424,7 +393,7 @@ SearchMacro.computeRange = function(index) {
  *  @return der ermittelte Vorschautext
  */
 SearchMacro.computePreview = function(range, content) {
-
+    
     var left;
     var right;
     var match;
@@ -542,8 +511,8 @@ SearchMacro.searchTask = function(chapter, query) {
     //zusammengefuehrt. Im Folgeschritt werden die kuerzestem Abstaende der
     //der Worte ermittelt, welche dann den Preview-Bereich definieren.
     index = SearchMacro.indexWords(words, chapter.content);
-    range = SearchMacro.computeRange(index, chapter.content);   
-    
+    range = SearchMacro.indexRange(index, chapter.content);
+
     chapter.preview = SearchMacro.computePreview(range || {left:0, right:0}, chapter.content);
     
     //der Offset fuer die Que wird gesetzt

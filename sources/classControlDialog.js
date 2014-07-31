@@ -27,7 +27,7 @@ ControlDialog.show = Dialog.show;
 /** Blendet die GUI-Komponente aus. */
 ControlDialog.hide = Dialog.hide;
 
-/** aktuelle ermittelter  Status */
+/** aktuelle ermittelter Status */
 ControlDialog.control;
 
 /** letzter angewandter Status */
@@ -54,13 +54,19 @@ ControlDialog.BUTTON_SEARCH = "ControlDialogSearch";
 /** Konstante fuer das Kapitel Suche */
 ControlDialog.CHPATER_SEARCH = "Suchen";
 
-/** Initialisiert die ControlDialog. */
-ControlDialog.initialize = function() {
+/** 
+ *  Initialisiert die ControlDialog.
+ *  @param wait Option fuer den asynchronen Aufruf
+ */
+ControlDialog.initialize = function(wait) {
+    
+    if (!wait) Application.registerEvent(window, "load", ControlDialog.watchEditMode);    
+
+    if (!Parser || !Parser.completed()) {window.setTimeout(function() {ControlDialog.initialize(true);}, 25); return;}
 
     Application.registerEvent(document, "keydown", ControlDialog.onControl);
     Application.registerEvent(document, "keypress", ControlDialog.onControl);
     Application.registerEvent(document, "keyup", ControlDialog.onControl);
-    Application.registerEvent(window, "load", ControlDialog.watchEditMode);    
 };
 
 /**
@@ -87,15 +93,30 @@ ControlDialog.isValid = function() {
     return false;
 };
 
+/**
+ *  (De)Aktiviert ein Element.
+ *  @param  object   Id vom Element
+ *  @param  inactive optional
+ *  @return der aktulle Status vom Element  
+ */
+ControlDialog.inactiveElement = function(object, inactive) {
+    
+    object = document.getElementById(object);
+
+    if (inactive != null) object.setAttribute("inactive", inactive);
+        
+    return object.getAttribute("inactive") == "true";
+};
+
 /** Individuelle Anpassung/Konfiguration vom ControlDialog. */
 ControlDialog.customize = function() {
     
     Dom.addCssClass(ControlDialog.instance.object, ["screen", "only"]);
 
-    document.getElementById(ControlDialog.BUTTON_HOME).disabled = true;
-    document.getElementById(ControlDialog.BUTTON_EDIT).disabled = true;
-    document.getElementById(ControlDialog.BUTTON_PRINT).disabled = true;
-    document.getElementById(ControlDialog.BUTTON_SEARCH).disabled = true;
+    ControlDialog.inactiveElement(ControlDialog.BUTTON_HOME, true);
+    ControlDialog.inactiveElement(ControlDialog.BUTTON_EDIT, true);
+    ControlDialog.inactiveElement(ControlDialog.BUTTON_PRINT, true);
+    ControlDialog.inactiveElement(ControlDialog.BUTTON_SEARCH, true);
 };
 
 /** Bindet die GUI-Komponente ein. */
@@ -104,25 +125,27 @@ ControlDialog.show = function() {
     var access;
     
     if (Parser && Parser.getChapterSize() > 0)
-        document.getElementById(ControlDialog.BUTTON_HOME).disabled = false;
+        ControlDialog.inactiveElement(ControlDialog.BUTTON_HOME, false);
 
     if (Parser && Parser.getChapterSize() > 0)
-        document.getElementById(ControlDialog.BUTTON_PRINT).disabled = false;
+        ControlDialog.inactiveElement(ControlDialog.BUTTON_PRINT, false);
 
     if (Parser.getChapter(ControlDialog.CHPATER_SEARCH, true))
-        document.getElementById(ControlDialog.BUTTON_SEARCH).disabled = false;
+        ControlDialog.inactiveElement(ControlDialog.BUTTON_SEARCH, false);
         
     access = (Application.getMetaParameter("content-mode") || "").replace(/\s+/g, '');
     access = ("|" + access + "|").match(/\|write\|/);
-    
-    if (Application.isHta() && access && String(window.location).match(/^file:\/\//i))
-        document.getElementById(ControlDialog.BUTTON_EDIT).disabled = false;
+
+    if ((Application.isHta() || navigator.userAgent.match(/msie/i)) && access && String(window.location).match(/^file:\/\//i))
+        ControlDialog.inactiveElement(ControlDialog.BUTTON_EDIT, false);
 
     Dialog.show(this);
 };
 
 /** Einsprung beim Klick auf Home. */
 ControlDialog.onClickHome = function() {
+    
+    if (ControlDialog.inactiveElement(ControlDialog.BUTTON_HOME)) return;
 
     ContentView.show("1");
 };
@@ -133,6 +156,8 @@ ControlDialog.onClickEdit = function() {
     var shell;
     var source;
     var editor;
+
+    if (ControlDialog.inactiveElement(ControlDialog.BUTTON_EDIT)) return;
     
     editor = (Application.getMetaParameter("content-editor") || "").replace(/^\s+|\s+$/g, '');
     source = decodeURI(String(window.location)).replace(/^file:\/+/, '').replace(/\//g, '\\');
@@ -145,12 +170,16 @@ ControlDialog.onClickEdit = function() {
 
 /** Einsprung beim Klick auf Print. */
 ControlDialog.onClickPrint = function() {
+    
+    if (ControlDialog.inactiveElement(ControlDialog.BUTTON_PRINT)) return;
 
     window.print();
 };
 
 /** Einsprung beim Klick auf Search. */
 ControlDialog.onClickSearch = function() {
+
+    if (ControlDialog.inactiveElement(ControlDialog.BUTTON_SEARCH)) return;
 
     ContentView.show(ControlDialog.CHPATER_SEARCH);
 };
